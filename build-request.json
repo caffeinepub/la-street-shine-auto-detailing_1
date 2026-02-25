@@ -1,0 +1,37 @@
+{
+  "kind": "build_request",
+  "title": "Remove persistent arrow icon from 5-Star Rated Service card in WhyChooseUs",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-29",
+      "text": "In WhyChooseUs.tsx, perform a thorough audit of all JSX elements within the '5-Star Rated Service' (or '5-Star Customer Experience') card and remove every arrow, chevron, or directional icon element — including any ArrowRight, ChevronRight, or similar Lucide/SVG icons — that appears anywhere inside that card's heading, label, body, or wrapper. Ensure no arrow or chevron of any kind remains visible on that card after the change.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "the arrow by the top were it says 5 started rated service is still there remove the little arrow please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The '5-Star Rated Service' / '5-Star Customer Experience' card in WhyChooseUs.tsx renders with no arrow, chevron, or directional icon of any kind.",
+        "All other cards in the Why Choose Us section are unaffected.",
+        "The referral and loyalty reward cards added previously remain intact and unmodified."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not alter any other cards in the Why Choose Us section.",
+    "Do not modify any immutable frontend paths."
+  ],
+  "nonGoals": [
+    "Changing the layout, copy, or styling of any other section.",
+    "Modifying the backend in any way."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

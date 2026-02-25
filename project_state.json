@@ -1,0 +1,354 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 17,
+  "summary": "Building a full luxury mobile auto detailing website for LA Street Shine Auto Detailing based in Van Nuys, CA. Glossy black background with electric blue accents and white text. Includes hero section, about us, services with pricing, why choose us, before/after gallery, reviews, contact/booking form, admin page for bookings, and SEO optimization.",
+  "architectural_notes": [
+    "Theme: glossy black background, electric blue accents, white text, luxury car aesthetic",
+    "Business location: Van Nuys, CA — serves all of Los Angeles County",
+    "Phone: (909) 441-1114 | Social: @lastreetshineautodetail on TikTok and Instagram only"
+  ],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-apply-a-consistent-luxury-visual-theme-across-the-entire-site-glossy-black-0a0a0a-background-electric-blue-0066ff-accents-hot-pink-ff007f-secondary-accents-and-clean-white-text-use-bold-modern-sans-serif-typography-e-g-montserrat-or-similar-all-sections-must-feel-premium-sleek-and-high-end-like-a-luxury-auto-brand-website-fully-mobile-responsive-layout",
+      "title": "Apply a consistent luxury visual theme across the entire site: glossy black (#0a0a0a) background, electric blue (#0066FF) accents, hot pink (#FF007F) secondary accents, and clean white text. Use bold modern sans-serif typography (e.g., Montserrat or similar). All sections must feel premium, sleek, and high-end — like a luxury auto brand website. Fully mobile-responsive layout.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-hero-section-at-the-top-of-the-page-featuring-bold-headline-luxury-detailing-unmatched-shine-subheadline-premium-mobile-auto-detailing-that-comes-to-you-two-cta-buttons-book-your-detail-now-scrolls-to-booking-form-and-call-909-441-1114-tel-link-and-a-full-width-background-image-of-a-glossy-black-luxury-car-with-water-reflections-include-the-business-slogan-perfection-in-every-reflection-as-a-stylized-tagline",
+      "title": "Build a Hero section at the top of the page featuring: bold headline 'Luxury Detailing. Unmatched Shine.', subheadline 'Premium Mobile Auto Detailing That Comes to You.', two CTA buttons — 'Book Your Detail Now' (scrolls to booking form) and 'Call (909) 441-1114' (tel link), and a full-width background image of a glossy black luxury car with water reflections. Include the business slogan 'Perfection in Every Reflection.' as a stylized tagline.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-about-us-section-with-the-following-story-two-cousins-who-started-their-own-mobile-detailing-business-from-scratch-working-with-expensive-equipment-during-tough-times-driving-around-with-broken-tools-without-taking-them-to-the-shop-because-they-barely-had-money-to-start-up-they-were-helped-by-their-parents-with-clients-products-and-belief-in-their-dream-of-working-on-cool-cars-write-this-as-a-compelling-premium-brand-narrative-emphasizing-passion-grit-and-love-for-the-craft-include-the-slogan-perfection-in-every-reflection",
+      "title": "Build an About Us section with the following story: Two cousins who started their own mobile detailing business from scratch — working with expensive equipment during tough times, driving around with broken tools without taking them to the shop because they barely had money to start up. They were helped by their parents with clients, products, and belief in their dream of working on cool cars. Write this as a compelling, premium brand narrative emphasizing passion, grit, and love for the craft. Include the slogan 'Perfection in Every Reflection.'",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-services-pricing-section-displaying-all-services-with-prices-in-a-clean-card-or-grid-layout-include-basic-exterior-wash-35-basic-interior-clean-45-exterior-detail-60-interior-detail-60-exterior-interior-detail-package-120-also-include-service-cards-without-fixed-prices-for-wax-paint-protection-headlight-restoration-add-a-note-prices-may-vary-based-on-vehicle-size-and-condition-each-card-should-have-an-icon-service-name-price-if-applicable-and-a-short-description",
+      "title": "Build a Services & Pricing section displaying all services with prices in a clean card or grid layout. Include: Basic Exterior Wash ($35), Basic Interior Clean ($45), Exterior Detail ($60), Interior Detail ($60), Exterior + Interior Detail Package ($120). Also include service cards (without fixed prices) for: Wax & Paint Protection, Headlight Restoration. Add a note: 'Prices may vary based on vehicle size and condition.' Each card should have an icon, service name, price (if applicable), and a short description.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-why-choose-la-street-shine-section-with-five-value-propositions-displayed-as-icon-text-cards-we-come-to-you-mobile-service-premium-products-equipment-affordable-luxury-fast-reliable-service-5-star-customer-experience-style-with-electric-blue-icons-and-bold-headings",
+      "title": "Build a 'Why Choose LA Street Shine' section with five value propositions displayed as icon + text cards: 'We Come to You (Mobile Service)', 'Premium Products & Equipment', 'Affordable Luxury', 'Fast, Reliable Service', '5-Star Customer Experience'. Style with electric blue icons and bold headings.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-before-after-gallery-section-with-a-clean-side-by-side-comparison-layout-display-placeholder-comparison-cards-left-before-right-after-using-the-generated-before-after-car-images-add-a-heading-see-the-difference-and-a-subheading-emphasizing-the-transformation",
+      "title": "Build a Before & After Gallery section with a clean side-by-side comparison layout. Display placeholder comparison cards (left = 'Before', right = 'After') using the generated before/after car images. Add a heading 'See the Difference' and a subheading emphasizing the transformation.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-reviews-testimonials-section-with-space-for-customer-quotes-pre-populate-with-3-placeholder-5-star-testimonials-in-styled-cards-name-star-rating-quote-text-style-cards-with-a-dark-card-background-blue-star-icons-and-white-text",
+      "title": "Build a Reviews / Testimonials section with space for customer quotes. Pre-populate with 3 placeholder 5-star testimonials in styled cards (name, star rating, quote text). Style cards with a dark card background, blue star icons, and white text.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-contact-booking-section-with-phone-number-909-441-1114-displayed-prominently-as-a-clickable-link-instagram-and-tiktok-links-to-lastreetshineautodetail-service-area-text-serving-van-nuys-ca-and-all-of-los-angeles-county-we-come-to-you-and-a-booking-form-with-fields-name-phone-number-email-service-type-dropdown-with-all-services-vehicle-make-model-preferred-date-additional-notes-and-a-submit-button-form-submissions-must-be-saved-to-the-backend",
+      "title": "Build a Contact & Booking section with: phone number (909) 441-1114 displayed prominently as a clickable link, Instagram and TikTok links to @lastreetshineautodetail, service area text 'Serving Van Nuys, CA and all of Los Angeles County — We Come to You', and a booking form with fields: Name, Phone Number, Email, Service Type (dropdown with all services), Vehicle Make/Model, Preferred Date, Additional Notes, and a Submit button. Form submissions must be saved to the backend.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-password-protected-admin-page-at-route-admin-that-displays-all-submitted-bookings-in-a-table-admin-must-enter-a-hardcoded-passcode-e-g-lastreetshine2024-to-access-the-page-the-table-should-show-customer-name-phone-email-service-type-vehicle-info-preferred-date-notes-and-status-admin-can-update-booking-status-pending-confirmed-completed-and-delete-bookings-also-display-the-current-service-hours-and-service-area-editable-fields-the-admin-can-update-stored-in-the-backend",
+      "title": "Build a password-protected Admin page at route /admin that displays all submitted bookings in a table. Admin must enter a hardcoded passcode (e.g., 'lastreetshine2024') to access the page. The table should show: customer name, phone, email, service type, vehicle info, preferred date, notes, and status. Admin can update booking status (pending → confirmed → completed) and delete bookings. Also display the current service hours and service area (editable fields the admin can update, stored in the backend).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-seo-meta-tags-to-the-html-head-title-la-street-shine-auto-detailing-mobile-car-detailing-in-los-angeles-ca-meta-description-professional-mobile-auto-detailing-in-los-angeles-ca-we-come-to-you-serving-van-nuys-and-all-of-la-county-book-your-detail-today-909-441-1114-and-keywords-meta-including-mobile-car-detailing-near-me-auto-detailing-in-california-professional-car-cleaning-service-mobile-detailing-la-car-detailing-van-nuys-la-street-shine-add-open-graph-tags-for-social-sharing",
+      "title": "Add SEO meta tags to the HTML head: title 'LA Street Shine Auto Detailing | Mobile Car Detailing in Los Angeles, CA', meta description 'Professional mobile auto detailing in Los Angeles, CA. We come to you! Serving Van Nuys and all of LA County. Book your detail today — (909) 441-1114.', and keywords meta including: mobile car detailing near me, auto detailing in California, professional car cleaning service, mobile detailing LA, car detailing Van Nuys, LA Street Shine. Add Open Graph tags for social sharing.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-sticky-navigation-bar-at-the-top-with-the-business-name-la-street-shine-auto-detailing-as-the-logo-brand-text-and-navigation-links-to-about-services-why-us-gallery-reviews-contact-on-mobile-collapse-into-a-hamburger-menu-style-with-glossy-black-background-blue-pink-accent-on-active-links",
+      "title": "Add a sticky navigation bar at the top with the business name 'LA Street Shine Auto Detailing' as the logo/brand text, and navigation links to: About, Services, Why Us, Gallery, Reviews, Contact. On mobile, collapse into a hamburger menu. Style with glossy black background, blue/pink accent on active links.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-the-generated-hero-background-image-luxury-car-hero-dim-1920x1080-png-before-image-car-before-dim-800x600-png-and-after-image-car-after-dim-800x600-png-as-static-assets-from-frontend-public-assets-generated",
+      "title": "Render the generated hero background image (luxury-car-hero.dim_1920x1080.png), before image (car-before.dim_800x600.png), and after image (car-after.dim_800x600.png) as static assets from frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-booking-form-in-contactbooking-tsx-to-replace-the-current-mailto-form-action-with-a-proper-backend-submission-the-form-must-collect-full-name-phone-number-vehicle-make-model-and-service-requested-as-a-textarea-or-dropdown-on-submit-call-the-existing-submitbooking-backend-function-via-the-usesubmitbooking-hook-show-a-success-message-on-successful-submission-and-an-error-message-on-failure",
+      "title": "Update the booking form in ContactBooking.tsx to replace the current mailto: form action with a proper backend submission. The form must collect: Full Name, Phone Number, Vehicle Make & Model, and Service Requested (as a textarea or dropdown). On submit, call the existing submitBooking backend function via the useSubmitBooking hook. Show a success message on successful submission and an error message on failure.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-existing-full-featured-booking-form-in-contactbooking-tsx-with-fields-name-phone-number-email-service-type-dropdown-vehicle-make-model-preferred-date-additional-notes-is-preserved-and-used-as-the-primary-booking-form-the-simplified-4-field-form-from-the-pasted-component-should-not-replace-the-existing-implementation",
+      "title": "Ensure the existing full-featured booking form in ContactBooking.tsx (with fields: Name, Phone Number, Email, Service Type dropdown, Vehicle Make/Model, Preferred Date, Additional Notes) is preserved and used as the primary booking form. The simplified 4-field form from the pasted component should not replace the existing implementation.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-before-after-gallery-section-beforeaftergallery-tsx-entirely-from-the-page-it-must-no-longer-render-anywhere-on-the-site",
+      "title": "Remove the Before & After Gallery section (BeforeAfterGallery.tsx) entirely from the page. It must no longer render anywhere on the site.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-navbar-navigation-links-to-remove-the-gallery-entry-since-the-gallery-section-no-longer-exists-on-the-page",
+      "title": "Update the Navbar navigation links to remove the 'Gallery' entry, since the gallery section no longer exists on the page.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-footer-component-footer-tsx-does-not-render-any-gallery-section-gallery-related-quick-navigation-button-or-any-visual-gallery-block-remove-any-gallery-scroll-link-or-section-reference-from-the-footer-s-quick-navigation-buttons",
+      "title": "Ensure the Footer component (Footer.tsx) does not render any gallery section, gallery-related quick-navigation button, or any visual gallery block. Remove any 'Gallery' scroll link or section reference from the footer's quick-navigation buttons.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-save-the-uploaded-la-street-shine-logo-image-pink-car-silhouette-with-blue-bubbles-la-street-shine-auto-detailing-text-on-black-background-as-a-static-asset-at-frontend-public-assets-generated-la-street-shine-logo-png-and-render-it-in-the-navbar-component-in-place-of-the-current-text-based-brand-name-the-logo-image-should-be-sized-appropriately-for-a-navbar-height-48-56px-be-clickable-to-scroll-to-top-and-display-cleanly-on-the-glossy-black-navbar-background",
+      "title": "Save the uploaded LA Street Shine logo image (pink car silhouette with blue bubbles, 'LA STREET SHINE AUTO DETAILING' text on black background) as a static asset at frontend/public/assets/generated/la-street-shine-logo.png and render it in the Navbar component in place of the current text-based brand name. The logo image should be sized appropriately for a navbar (height ~48–56px), be clickable to scroll to top, and display cleanly on the glossy black navbar background.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-la-street-shine-logo-image-from-the-navbar-component-and-restore-the-text-based-brand-name-la-street-shine-auto-detailing-in-its-place-the-text-should-be-styled-consistently-with-the-existing-glossy-black-navbar-using-the-brand-s-electric-blue-or-white-color-and-bold-montserrat-typography",
+      "title": "Remove the LA Street Shine logo image from the Navbar component and restore the text-based brand name 'LA Street Shine Auto Detailing' in its place. The text should be styled consistently with the existing glossy black navbar, using the brand's electric blue or white color and bold Montserrat typography.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-la-street-shine-logo-image-from-the-hero-section-if-it-is-currently-rendered-there-restoring-any-previous-headline-or-brand-text-layout-in-that-area",
+      "title": "Remove the LA Street Shine logo image from the Hero section if it is currently rendered there, restoring any previous headline or brand text layout in that area.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-the-hero-section-hero-tsx-update-the-book-your-detail-now-cta-button-so-that-clicking-it-smoothly-scrolls-the-page-down-to-the-booking-contact-form-section-the-element-with-id-contact-or-booking",
+      "title": "In the Hero section (Hero.tsx), update the 'Book Your Detail Now' CTA button so that clicking it smoothly scrolls the page down to the booking/contact form section (the element with id 'contact' or 'booking').",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-the-booking-form-in-contactbooking-tsx-add-a-preferred-time-time-picker-input-field-placed-directly-alongside-or-immediately-below-the-existing-preferred-date-field-the-time-value-must-be-included-in-the-booking-submission-payload-sent-to-the-backend",
+      "title": "In the booking form in ContactBooking.tsx, add a 'Preferred Time' time picker input field placed directly alongside or immediately below the existing 'Preferred Date' field. The time value must be included in the booking submission payload sent to the backend.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-servicessection-tsx-remove-the-wax-paint-protection-service-card-entirely-in-its-place-add-a-new-premium-ceramic-coating-service-card-the-card-must-clearly-state-pricing-is-per-panel-labor-is-intensive-price-varies-by-vehicle-size-and-condition-display-contact-for-quote-instead-of-a-fixed-price-include-a-short-description-explaining-the-panel-by-panel-application-process",
+      "title": "In ServicesSection.tsx, remove the 'Wax & Paint Protection' service card entirely. In its place, add a new 'Premium Ceramic Coating' service card. The card must clearly state: pricing is per panel, labor is intensive, price varies by vehicle size and condition. Display 'Contact for Quote' instead of a fixed price. Include a short description explaining the panel-by-panel application process.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-whychooseus-tsx-locate-the-5-star-customer-experience-or-5-star-rated-service-card-and-remove-any-arrow-icon-or-chevron-icon-that-is-currently-rendered-next-to-or-within-that-card-s-heading-or-label",
+      "title": "In WhyChooseUs.tsx, locate the '5-Star Customer Experience' (or '5-Star Rated Service') card and remove any arrow icon or chevron icon that is currently rendered next to or within that card's heading or label.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-whychooseus-tsx-add-two-new-styled-highlight-cards-or-callout-blocks-displayed-below-or-alongside-the-existing-five-value-proposition-cards-the-first-card-must-communicate-referral-reward-refer-a-new-client-to-us-and-receive-40-off-your-next-service-the-second-card-must-communicate-loyalty-discount-returning-for-your-second-visit-enjoy-15-off-both-cards-must-be-styled-to-match-the-luxury-electric-blue-hot-pink-aesthetic-of-the-existing-section",
+      "title": "In WhyChooseUs.tsx, add two new styled highlight cards or callout blocks displayed below or alongside the existing five value proposition cards. The first card must communicate: 'Referral Reward — Refer a new client to us and receive 40% off your next service.' The second card must communicate: 'Loyalty Discount — Returning for your second visit? Enjoy 15% off.' Both cards must be styled to match the luxury electric blue/hot pink aesthetic of the existing section.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Hero section with headline 'Luxury Detailing. Unmatched Shine.', subheadline, CTA buttons (Book Now + Call), and luxury car background image",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "About Us section: story of two cousins starting mobile detailing with limited funds, passion for cars, slogan 'Perfection in every reflection'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Services section with pricing: Basic Exterior Wash $35, Basic Interior Clean $45, Exterior Detail $60, Interior Detail $60, Both Together $120 (prices vary by vehicle size/condition), plus Wax & Paint Protection, Headlight Restoration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Why Choose LA Street Shine section: mobile service, premium products, affordable luxury, fast/reliable, 5-star experience",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Reviews/Testimonials section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Contact section with phone (909) 441-1114, Instagram & TikTok @lastreetshineautodetail, and booking/contact form",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Admin page to view and manage bookings",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "SEO optimization for mobile detailing keywords, mobile-friendly and fast-loading",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Implement a backend data model and API for bookings. Store each booking with: id, name, phone, email, serviceType, vehicleInfo, preferredDate, notes, status (pending/confirmed/completed), and createdAt timestamp. Expose functions: submitBooking (public), getAllBookings (admin-only via caller check), updateBookingStatus, deleteBooking.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Ensure the Hero section background uses the locally hosted luxury car hero image from frontend/public/assets/generated/luxury-car-hero.dim_1920x1080.png instead of an external Unsplash URL.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Remove the Before & After Gallery section entirely from the site",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Remove the 'Book Your Details Now' text/button that appears below or near the gallery section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Remove the 'Book Your Details Now' button or text element that appears below or near the gallery area. No such standalone CTA should appear in that region of the page.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Remove any gallery section that appears at the bottom of the website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Hero 'Book Your Detail Now' CTA button smoothly scrolls down to the booking form section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Add a 'Preferred Time' time picker field to the booking form alongside the existing Preferred Date field",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Replace Wax & Paint Protection service card with a Premium Ceramic Coating card — priced per panel, labor-intensive, varies by vehicle size and condition, show 'Contact for Quote'",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-29",
+      "summary": "Remove the arrow icon next to the '5-Star Rated Service' element in the Why Choose Us section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-30",
+      "summary": "Add Referral Reward card near Why Choose Us section: existing clients who refer a new client get 40% off their next service",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-31",
+      "summary": "Add Loyalty Discount card near Why Choose Us section: returning clients get 15% off on their second visit",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "In WhyChooseUs.tsx, perform a thorough audit of all JSX elements within the '5-Star Rated Service' (or '5-Star Customer Experience') card and remove every arrow, chevron, or directional icon element — including any ArrowRight, ChevronRight, or similar Lucide/SVG icons — that appears anywhere inside that card's heading, label, body, or wrapper. Ensure no arrow or chevron of any kind remains visible on that card after the change.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "LA Street Shine Auto Detailing",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

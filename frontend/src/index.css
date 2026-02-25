@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* LA Street Shine Brand Colors - OKLCH */
+    --background: 0.08 0 0;
+    --foreground: 0.97 0 0;
+
+    --card: 0.11 0 0;
+    --card-foreground: 0.97 0 0;
+
+    --popover: 0.13 0 0;
+    --popover-foreground: 0.97 0 0;
+
+    /* Electric Blue primary */
+    --primary: 0.55 0.22 250;
+    --primary-foreground: 0.97 0 0;
+
+    /* Hot Pink secondary */
+    --secondary: 0.58 0.26 340;
+    --secondary-foreground: 0.97 0 0;
+
+    --muted: 0.18 0 0;
+    --muted-foreground: 0.65 0 0;
+
+    --accent: 0.55 0.22 250;
+    --accent-foreground: 0.97 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.22 0 0;
+    --input: 0.18 0 0;
+    --ring: 0.55 0.22 250;
+
+    --chart-1: 0.55 0.22 250;
+    --chart-2: 0.58 0.26 340;
+    --chart-3: 0.7 0.15 200;
+    --chart-4: 0.65 0.2 280;
+    --chart-5: 0.6 0.18 220;
+
+    --sidebar: 0.1 0 0;
+    --sidebar-foreground: 0.97 0 0;
+    --sidebar-primary: 0.55 0.22 250;
+    --sidebar-primary-foreground: 0.97 0 0;
+    --sidebar-accent: 0.15 0 0;
+    --sidebar-accent-foreground: 0.97 0 0;
+    --sidebar-border: 0.22 0 0;
+    --sidebar-ring: 0.55 0.22 250;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+    background-color: oklch(0.08 0 0);
+    color: oklch(0.97 0 0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient-blue {
+    background: linear-gradient(135deg, oklch(0.65 0.22 250), oklch(0.75 0.18 220));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-pink {
+    background: linear-gradient(135deg, oklch(0.68 0.26 340), oklch(0.75 0.22 320));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, oklch(0.65 0.22 250), oklch(0.68 0.26 340));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: oklch(0.12 0.01 250 / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.55 0.22 250 / 0.2);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px oklch(0.55 0.22 250 / 0.4), 0 0 40px oklch(0.55 0.22 250 / 0.15);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 20px oklch(0.58 0.26 340 / 0.4), 0 0 40px oklch(0.58 0.26 340 / 0.15);
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .section-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, oklch(0.55 0.22 250), oklch(0.58 0.26 340), transparent);
+  }
+
+  .btn-blue {
+    background: linear-gradient(135deg, oklch(0.5 0.22 250), oklch(0.45 0.2 260));
+    color: oklch(0.97 0 0);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid oklch(0.65 0.22 250 / 0.5);
+  }
+
+  .btn-blue:hover {
+    background: linear-gradient(135deg, oklch(0.6 0.22 250), oklch(0.55 0.2 260));
+    box-shadow: 0 0 25px oklch(0.55 0.22 250 / 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-pink {
+    background: linear-gradient(135deg, oklch(0.55 0.26 340), oklch(0.5 0.24 350));
+    color: oklch(0.97 0 0);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid oklch(0.65 0.26 340 / 0.5);
+  }
+
+  .btn-pink:hover {
+    background: linear-gradient(135deg, oklch(0.62 0.26 340), oklch(0.58 0.24 350));
+    box-shadow: 0 0 25px oklch(0.58 0.26 340 / 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-blue {
+    background: transparent;
+    color: oklch(0.65 0.22 250);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid oklch(0.55 0.22 250);
+  }
+
+  .btn-outline-blue:hover {
+    background: oklch(0.55 0.22 250 / 0.1);
+    box-shadow: 0 0 20px oklch(0.55 0.22 250 / 0.3);
+    transform: translateY(-1px);
+  }
+}

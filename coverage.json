@@ -1,0 +1,35 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T19:50:15.045Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 0,
+    "items": [
+      {
+        "id": "REQ-29",
+        "summary": "In WhyChooseUs.tsx, perform a thorough audit of all JSX elements within the '5-Star Rated Service' (or '5-Star Customer Experience') card and remove every arrow, chevron, or directional icon element — including any ArrowRight, ChevronRight, or similar Lucide/SVG icons — that appears anywhere inside that card's heading, label, body, or wrapper. Ensure no arrow or chevron of any kind remains visible on that card after the change.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/components/WhyChooseUs.tsx"
+        ],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/Hero.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

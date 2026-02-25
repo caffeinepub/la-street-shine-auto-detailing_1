@@ -1,0 +1,33 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T19:50:15.042Z",
+  "summary": "The diff modifies Hero.tsx, frontend-file-summaries.txt, and project_state.json. None of these files is WhyChooseUs.tsx. REQ-29 requires auditing and removing arrow/chevron/directional icons from the '5-Star Rated Service' card in WhyChooseUs.tsx, but no changes to WhyChooseUs.tsx are present in the diff. The frontend-file-summaries.txt entry for WhyChooseUs.tsx still describes it as having 'five value proposition cards (unchanged)', with no mention of arrow removal. The changes to Hero.tsx and other files are unrelated to REQ-29.",
+  "missing_requirements": [
+    {
+      "id": "REQ-29",
+      "requirement": "In WhyChooseUs.tsx, perform a thorough audit of all JSX elements within the '5-Star Rated Service' (or '5-Star Customer Experience') card and remove every arrow, chevron, or directional icon element — including any ArrowRight, ChevronRight, or similar Lucide/SVG icons — that appears anywhere inside that card's heading, label, body, or wrapper.",
+      "reason": "WhyChooseUs.tsx is not modified in the diff at all. The file-summaries entry for WhyChooseUs.tsx describes the cards as 'unchanged' with no mention of arrow or icon removal. No evidence that any arrow or chevron was removed from the 5-Star Rated Service card.",
+      "evidence": [
+        "frontend/src/components/WhyChooseUs.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "ChevronDown scroll indicator arrow removed from Hero.tsx",
+      "reason": "The diff modifies Hero.tsx and the file summary notes the scroll indicator arrow (ChevronDown) has been removed from the Hero section. This was not requested by REQ-29 or any stated requirement in the build request.",
+      "evidence": [
+        "frontend/src/components/Hero.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.92,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/Hero.tsx",
+    "project_state.json"
+  ]
+}
