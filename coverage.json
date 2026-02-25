@@ -1,23 +1,27 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T19:50:15.045Z",
+  "generatedAt": "2026-02-25T20:50:59.843Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
     "total": 1,
-    "implemented": 0,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-29",
-        "summary": "In WhyChooseUs.tsx, perform a thorough audit of all JSX elements within the '5-Star Rated Service' (or '5-Star Customer Experience') card and remove every arrow, chevron, or directional icon element — including any ArrowRight, ChevronRight, or similar Lucide/SVG icons — that appears anywhere inside that card's heading, label, body, or wrapper. Ensure no arrow or chevron of any kind remains visible on that card after the change.",
-        "status": "missing",
+        "id": "REQ-32",
+        "summary": "In Hero.tsx, update the 'Book Your Detail Now' CTA button so that clicking it smoothly scrolls the page down to the booking/contact form section. The button's onClick handler must use document.getElementById('contact') (or 'booking', whichever id is present on the ContactBooking section wrapper) and call scrollIntoView({ behavior: 'smooth' }) to animate the scroll. Verify the target section element has the matching id attribute.",
+        "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/WhyChooseUs.tsx"
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/ContactBooking.tsx"
         ],
-        "matchedFiles": []
+        "matchedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/ContactBooking.tsx"
+        ]
       }
     ]
   },
@@ -26,6 +30,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/src/components/ContactBooking.tsx",
     "frontend/src/components/Hero.tsx",
     "project_state.json",
     "scratch/component-selection.json",

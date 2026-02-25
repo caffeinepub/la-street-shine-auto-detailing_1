@@ -1,4 +1,25 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-in-hero-tsx-update-the-book-your-detail-now-cta-button-so-that-clicking-it-smoothly-scrolls-the-page-down-to-the-booking-contact-form-section-the-button-s-onclick-handler-must-use-document-getelementbyid-contact-or-booking-whichever-id-is-present-on-the-contactbooking-section-wrapper-and-call-scrollintoview-behavior-smooth-to-animate-the-scroll-verify-the-target-section-element-has-the-matching-id-attribute",
+      "featureTitle": "In Hero.tsx, update the 'Book Your Detail Now' CTA button so that clicking it smoothly scrolls the page down to the booking/contact form section. The button's onClick handler must use document.getElementById('contact') (or 'booking', whichever id is present on the ContactBooking section wrapper) and call scrollIntoView({ behavior: 'smooth' }) to animate the scroll. Verify the target section element has the matching id attribute.",
+      "files": [
+        "frontend/src/components/ContactBooking.tsx",
+        "frontend/src/components/Hero.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    }
+  ]
 }

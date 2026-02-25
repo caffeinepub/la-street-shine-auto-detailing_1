@@ -1,9 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Remove the persistent arrow/chevron icon from the "5-Star Rated Service" card in the WhyChooseUs section.
+**Goal:** Fix the "Book Your Detail Now" hero button so clicking it smoothly scrolls the page down to the booking/contact form section.
 
 **Planned changes:**
-- Audit all JSX elements inside the "5-Star Rated Service" (or "5-Star Customer Experience") card in `WhyChooseUs.tsx` and remove any arrow, chevron, or directional icon (e.g., ArrowRight, ChevronRight, or similar) found anywhere within that card.
+- Update the "Book Your Detail Now" CTA button in `Hero.tsx` to add an `onClick` handler that calls `document.getElementById('contact')` (or `'booking'`) and invokes `scrollIntoView({ behavior: 'smooth' })`
+- Ensure the ContactBooking section wrapper element has a matching `id` attribute (`contact` or `booking`) as the scroll target
 
-**User-visible outcome:** The "5-Star Rated Service" card displays with no arrow or chevron icon, while all other cards in the Why Choose Us section remain unchanged.
+**User-visible outcome:** Clicking "Book Your Detail Now" in the hero section smoothly animates the page scroll down to the booking form at the bottom of the page, on both desktop and mobile.

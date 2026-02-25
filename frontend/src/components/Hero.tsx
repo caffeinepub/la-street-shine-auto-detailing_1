@@ -1,7 +1,9 @@
 export default function Hero() {
   const scrollToBooking = () => {
-    const el = document.getElementById('booking') || document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('booking');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

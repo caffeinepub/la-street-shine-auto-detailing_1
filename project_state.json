@@ -1,13 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 17,
+  "projectStateVersion": 23,
   "summary": "Building a full luxury mobile auto detailing website for LA Street Shine Auto Detailing based in Van Nuys, CA. Glossy black background with electric blue accents and white text. Includes hero section, about us, services with pricing, why choose us, before/after gallery, reviews, contact/booking form, admin page for bookings, and SEO optimization.",
   "architectural_notes": [
     "Theme: glossy black background, electric blue accents, white text, luxury car aesthetic",
     "Business location: Van Nuys, CA — serves all of Los Angeles County",
     "Phone: (909) 441-1114 | Social: @lastreetshineautodetail on TikTok and Instagram only"
   ],
-  "known_issues": [],
+  "known_issues": [
+    "Booking form input fields show white text on light background, making typed text invisible to users"
+  ],
   "isFixRequest": true,
   "existing_features": [
     {
@@ -209,6 +211,30 @@
         "REQ-28"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-in-contactbooking-tsx-update-all-form-input-fields-text-email-tel-date-time-select-textarea-so-that-typed-selected-text-is-rendered-in-a-dark-color-e-g-111-or-1a1a1a-with-a-light-or-white-input-background-ensuring-the-text-is-clearly-visible-apply-consistent-padding-minimum-height-at-least-44px-for-tap-targets-and-a-visible-border-so-every-field-is-easy-to-read-and-interact-with-on-both-desktop-and-mobile",
+      "title": "In ContactBooking.tsx, update all form input fields (text, email, tel, date, time, select, textarea) so that typed/selected text is rendered in a dark color (e.g., #111 or #1a1a1a) with a light or white input background, ensuring the text is clearly visible. Apply consistent padding, minimum height (at least 44px for tap targets), and a visible border so every field is easy to read and interact with on both desktop and mobile.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-contactbooking-tsx-add-client-side-required-field-validation-to-the-booking-form-all-required-fields-name-phone-number-email-service-type-vehicle-make-model-preferred-date-preferred-time-must-be-validated-on-submit-if-any-required-field-is-empty-or-unselected-prevent-form-submission-and-display-an-inline-error-message-directly-below-that-field-e-g-name-is-required-please-select-a-service-email-is-required-each-error-message-must-be-specific-to-the-field-that-failed",
+      "title": "In ContactBooking.tsx, add client-side required field validation to the booking form. All required fields (Name, Phone Number, Email, Service Type, Vehicle Make/Model, Preferred Date, Preferred Time) must be validated on submit. If any required field is empty or unselected, prevent form submission and display an inline error message directly below that field (e.g., 'Name is required', 'Please select a service', 'Email is required'). Each error message must be specific to the field that failed.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-hero-tsx-update-the-book-your-detail-now-cta-button-so-that-clicking-it-smoothly-scrolls-the-page-down-to-the-booking-contact-form-section-the-button-s-onclick-handler-must-use-document-getelementbyid-contact-or-booking-whichever-id-is-present-on-the-contactbooking-section-wrapper-and-call-scrollintoview-behavior-smooth-to-animate-the-scroll-verify-the-target-section-element-has-the-matching-id-attribute",
+      "title": "In Hero.tsx, update the 'Book Your Detail Now' CTA button so that clicking it smoothly scrolls the page down to the booking/contact form section. The button's onClick handler must use document.getElementById('contact') (or 'booking', whichever id is present on the ContactBooking section wrapper) and call scrollIntoView({ behavior: 'smooth' }) to animate the scroll. Verify the target section element has the matching id attribute.",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -344,6 +370,18 @@
       "reqIds": [
         "REQ-29"
       ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-33",
+      "summary": "Fix booking form: white text is invisible against white/light input backgrounds — make typed text dark/visible. Also fix phone number field to be easy to click/tap with proper sizing, padding, and contrast.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-34",
+      "summary": "Add required field validation to the booking form — each unfilled required field should highlight with a specific inline error message (e.g., 'Name is required'). Style error states with the luxury electric blue/hot pink aesthetic, professional and polished on desktop and mobile.",
+      "reqIds": [],
       "status": "pending"
     }
   ],

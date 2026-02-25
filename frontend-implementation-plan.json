@@ -1,21 +1,27 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove persistent arrow icon from 5-Star Rated Service card in WhyChooseUs",
+  "title": "Fix 'Book Your Detail Now' hero button scroll to booking form",
   "requirements": [
     {
-      "id": "REQ-29",
-      "summary": "Remove all arrow, chevron, or directional icon elements from the '5-Star Rated Service' (or '5-Star Customer Experience') card in WhyChooseUs.tsx",
+      "id": "REQ-32",
+      "summary": "Update the Hero CTA button to smoothly scroll to the booking form section when clicked",
       "acceptanceCriteria": [
-        "The '5-Star Rated Service' / '5-Star Customer Experience' card in WhyChooseUs.tsx renders with no arrow, chevron, or directional icon of any kind.",
-        "All other cards in the Why Choose Us section are unaffected.",
-        "The referral and loyalty reward cards added previously remain intact and unmodified."
+        "Clicking 'Book Your Detail Now' in the Hero section smoothly scrolls the page to the booking form section at the bottom.",
+        "The scroll animation is smooth (behavior: 'smooth'), not an instant jump.",
+        "The ContactBooking section wrapper element has an id of 'contact' or 'booking' that the scroll target references.",
+        "The button works correctly on both desktop and mobile viewports."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/WhyChooseUs.tsx",
+          "path": "frontend/src/components/Hero.tsx",
           "operation": "modify",
-          "description": "Perform a thorough audit of the '5-Star Rated Service' or '5-Star Customer Experience' card JSX. Remove every instance of ArrowRight, ChevronRight, or any similar Lucide/SVG directional icon element that appears within that specific card's heading, label, body, or wrapper. Ensure no arrow or chevron icon of any kind remains visible on that card. Leave all other cards and their icons unchanged."
+          "description": "Update the 'Book Your Detail Now' button's onClick handler to use document.getElementById('contact') or document.getElementById('booking') and call scrollIntoView({ behavior: 'smooth' }) to smoothly scroll to the booking form section. Ensure the handler safely checks that the target element exists before calling scrollIntoView."
+        },
+        {
+          "path": "frontend/src/components/ContactBooking.tsx",
+          "operation": "modify",
+          "description": "Add an id attribute ('contact' or 'booking') to the root wrapper element of the ContactBooking component so that the Hero button's scroll target can reference it. Verify this id matches the one used in Hero.tsx."
         }
       ]
     }
