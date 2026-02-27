@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { SiInstagram, SiTiktok } from 'react-icons/si';
-import { useSubmitBooking } from '../hooks/useQueries';
 import { ServiceType } from '../backend';
 
 const serviceOptions = [
@@ -78,8 +77,7 @@ export default function ContactBooking() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
-
-  const { mutate: submitBooking, isPending, isError, error } = useSubmitBooking();
+  const [isPending, setIsPending] = useState(false);
 
   const clearFieldError = (field: keyof FormErrors) => {
     if (errors[field]) {
@@ -145,35 +143,40 @@ export default function ContactBooking() {
     }
 
     setErrors({});
+    setIsPending(true);
 
-    submitBooking(
-      {
-        name: form.name.trim(),
-        phone: form.phone.trim(),
-        email: form.email.trim(),
-        serviceType: form.serviceType as ServiceType,
-        vehicleInfo: form.vehicleInfo.trim(),
-        preferredDate: form.preferredDate,
-        preferredTime: form.preferredTime,
-        notes: form.notes.trim(),
-      },
-      {
-        onSuccess: () => {
-          setSubmitted(true);
-          setForm({
-            name: '',
-            phone: '',
-            email: '',
-            serviceType: '',
-            vehicleInfo: '',
-            preferredDate: '',
-            preferredTime: '',
-            notes: '',
-          });
-          setErrors({});
-        },
-      }
+    const serviceLabel = serviceOptions.find(o => o.value === form.serviceType)?.label ?? form.serviceType;
+
+    const subject = encodeURIComponent(`New Booking Request — ${form.name.trim()}`);
+    const body = encodeURIComponent(
+      `New Booking Request from LA Street Shine Website\n\n` +
+      `Name: ${form.name.trim()}\n` +
+      `Phone: ${form.phone.trim()}\n` +
+      `Email: ${form.email.trim()}\n` +
+      `Service: ${serviceLabel}\n` +
+      `Vehicle: ${form.vehicleInfo.trim()}\n` +
+      `Preferred Date: ${form.preferredDate}\n` +
+      `Preferred Time: ${form.preferredTime || 'Any time'}\n` +
+      `Notes: ${form.notes.trim() || 'None'}\n`
     );
+
+    window.location.href = `mailto:lastreetshineautodetailing@gmail.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      setIsPending(false);
+      setSubmitted(true);
+      setForm({
+        name: '',
+        phone: '',
+        email: '',
+        serviceType: '',
+        vehicleInfo: '',
+        preferredDate: '',
+        preferredTime: '',
+        notes: '',
+      });
+      setErrors({});
+    }, 1000);
   };
 
   return (
@@ -477,22 +480,7 @@ export default function ContactBooking() {
                   />
                 </div>
 
-                {/* Error banner for submission errors */}
-                {isError && (
-                  <div className="flex items-start gap-3 p-4 rounded-lg bg-brand-pink/10 border border-brand-pink/30">
-                    <AlertCircle className="w-5 h-5 text-brand-pink-light shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-brand-pink-light font-bold text-sm">Booking system temporarily unavailable</p>
-                      <p className="text-brand-gray text-xs mt-1">
-                        Please call us directly at{' '}
-                        <a href="tel:9094411114" className="text-white font-semibold hover:text-brand-blue-light">
-                          (909) 441-1114
-                        </a>{' '}
-                        to schedule your detail.
-                      </p>
-                    </div>
-                  </div>
-                )}
+
 
                 <button
                   type="submit"
