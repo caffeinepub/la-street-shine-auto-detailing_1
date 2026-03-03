@@ -64,15 +64,20 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: oklch(0.08 0 0);
     color: oklch(0.97 0 0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Montserrat", sans-serif;
     font-weight: 800;
     letter-spacing: -0.02em;
   }
@@ -80,21 +85,33 @@
 
 @layer utilities {
   .text-gradient-blue {
-    background: linear-gradient(135deg, oklch(0.65 0.22 250), oklch(0.75 0.18 220));
+    background: linear-gradient(
+      135deg,
+      oklch(0.65 0.22 250),
+      oklch(0.75 0.18 220)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-pink {
-    background: linear-gradient(135deg, oklch(0.68 0.26 340), oklch(0.75 0.22 320));
+    background: linear-gradient(
+      135deg,
+      oklch(0.68 0.26 340),
+      oklch(0.75 0.22 320)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-brand {
-    background: linear-gradient(135deg, oklch(0.65 0.22 250), oklch(0.68 0.26 340));
+    background: linear-gradient(
+      135deg,
+      oklch(0.65 0.22 250),
+      oklch(0.68 0.26 340)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -107,11 +124,13 @@
   }
 
   .glow-blue {
-    box-shadow: 0 0 20px oklch(0.55 0.22 250 / 0.4), 0 0 40px oklch(0.55 0.22 250 / 0.15);
+    box-shadow: 0 0 20px oklch(0.55 0.22 250 / 0.4), 0 0 40px
+      oklch(0.55 0.22 250 / 0.15);
   }
 
   .glow-pink {
-    box-shadow: 0 0 20px oklch(0.58 0.26 340 / 0.4), 0 0 40px oklch(0.58 0.26 340 / 0.15);
+    box-shadow: 0 0 20px oklch(0.58 0.26 340 / 0.4), 0 0 40px
+      oklch(0.58 0.26 340 / 0.15);
   }
 
   .border-gradient {
@@ -122,11 +141,21 @@
 
   .section-divider {
     height: 2px;
-    background: linear-gradient(90deg, transparent, oklch(0.55 0.22 250), oklch(0.58 0.26 340), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.55 0.22 250),
+      oklch(0.58 0.26 340),
+      transparent
+    );
   }
 
   .btn-blue {
-    background: linear-gradient(135deg, oklch(0.5 0.22 250), oklch(0.45 0.2 260));
+    background: linear-gradient(
+      135deg,
+      oklch(0.5 0.22 250),
+      oklch(0.45 0.2 260)
+    );
     color: oklch(0.97 0 0);
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -136,13 +165,21 @@
   }
 
   .btn-blue:hover {
-    background: linear-gradient(135deg, oklch(0.6 0.22 250), oklch(0.55 0.2 260));
+    background: linear-gradient(
+      135deg,
+      oklch(0.6 0.22 250),
+      oklch(0.55 0.2 260)
+    );
     box-shadow: 0 0 25px oklch(0.55 0.22 250 / 0.5);
     transform: translateY(-1px);
   }
 
   .btn-pink {
-    background: linear-gradient(135deg, oklch(0.55 0.26 340), oklch(0.5 0.24 350));
+    background: linear-gradient(
+      135deg,
+      oklch(0.55 0.26 340),
+      oklch(0.5 0.24 350)
+    );
     color: oklch(0.97 0 0);
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -152,7 +189,11 @@
   }
 
   .btn-pink:hover {
-    background: linear-gradient(135deg, oklch(0.62 0.26 340), oklch(0.58 0.24 350));
+    background: linear-gradient(
+      135deg,
+      oklch(0.62 0.26 340),
+      oklch(0.58 0.24 350)
+    );
     box-shadow: 0 0 25px oklch(0.58 0.26 340 / 0.5);
     transform: translateY(-1px);
   }

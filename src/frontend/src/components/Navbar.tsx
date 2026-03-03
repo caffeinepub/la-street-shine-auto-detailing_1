@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Why Us', href: '#why-us' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact' },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Why Us", href: "#why-us" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -15,30 +15,30 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const id = href.replace('#', '');
+    const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToTop = () => {
     setIsOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-brand-black/95 backdrop-blur-md shadow-lg border-b border-brand-blue/20'
-          : 'bg-transparent'
+          ? "bg-brand-black/95 backdrop-blur-md shadow-lg border-b border-brand-blue/20"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,7 +52,10 @@ export default function Navbar() {
           >
             <span className="font-montserrat font-black text-lg md:text-xl text-brand-blue-light tracking-tight leading-tight">
               LA Street Shine
-              <span className="hidden sm:inline text-white font-semibold text-base"> Auto Detailing</span>
+              <span className="hidden sm:inline text-white font-semibold text-base">
+                {" "}
+                Auto Detailing
+              </span>
             </span>
           </button>
 

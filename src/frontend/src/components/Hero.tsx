@@ -1,8 +1,8 @@
 export default function Hero() {
   const scrollToBooking = () => {
-    const el = document.getElementById('booking');
+    const el = document.getElementById("booking");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -11,10 +11,11 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('/assets/generated/luxury-car-hero.dim_1920x1080.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage:
+          "url('/assets/generated/luxury-car-hero.dim_1920x1080.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Dark overlay with gradient */}
@@ -43,7 +44,9 @@ export default function Hero() {
         <p className="text-lg sm:text-xl md:text-2xl text-brand-gray font-medium mb-10 max-w-2xl mx-auto leading-relaxed">
           Premium Mobile Auto Detailing That Comes to You.
           <br />
-          <span className="text-brand-blue-light font-semibold">Serving Van Nuys & All of Los Angeles County.</span>
+          <span className="text-brand-blue-light font-semibold">
+            Serving Van Nuys & All of Los Angeles County.
+          </span>
         </p>
 
         {/* CTA Buttons */}
@@ -66,18 +69,21 @@ export default function Hero() {
         {/* Stats row */}
         <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto">
           {[
-            { value: '100%', label: 'Mobile Service' },
-            { value: '5★', label: 'Rated Service' },
-            { value: 'LA', label: 'County Wide' },
+            { value: "100%", label: "Mobile Service" },
+            { value: "5★", label: "Rated Service" },
+            { value: "LA", label: "County Wide" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div
                 className="text-2xl font-black"
-                style={{ color: 'oklch(0.65 0.22 250)' }}
+                style={{ color: "oklch(0.65 0.22 250)" }}
               >
                 {stat.value}
               </div>
-              <div className="text-xs uppercase tracking-wider font-semibold mt-1" style={{ color: '#ffffff' }}>
+              <div
+                className="text-xs uppercase tracking-wider font-semibold mt-1"
+                style={{ color: "#ffffff" }}
+              >
                 {stat.label}
               </div>
             </div>

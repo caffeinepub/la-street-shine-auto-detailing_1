@@ -1,14 +1,20 @@
-import { createRouter, createRoute, createRootRoute, RouterProvider, Outlet } from '@tanstack/react-router';
-import { Toaster } from '@/components/ui/sonner';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import AboutUs from './components/AboutUs';
-import ServicesSection from './components/ServicesSection';
-import WhyChooseUs from './components/WhyChooseUs';
-import Testimonials from './components/Testimonials';
-import ContactBooking from './components/ContactBooking';
-import Footer from './components/Footer';
-import AdminPage from './pages/AdminPage';
+import { Toaster } from "@/components/ui/sonner";
+import {
+  Outlet,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from "@tanstack/react-router";
+import AboutUs from "./components/AboutUs";
+import ContactBooking from "./components/ContactBooking";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import ServicesSection from "./components/ServicesSection";
+import Testimonials from "./components/Testimonials";
+import WhyChooseUs from "./components/WhyChooseUs";
+import AdminPage from "./pages/AdminPage";
 
 function RootLayout() {
   return (
@@ -42,13 +48,13 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: HomePage,
 });
 
 const adminRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/admin',
+  path: "/admin",
   component: AdminPage,
 });
 
@@ -56,7 +62,7 @@ const routeTree = rootRoute.addChildren([indexRoute, adminRoute]);
 
 const router = createRouter({ routeTree });
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

@@ -1,23 +1,67 @@
-import { useState } from 'react';
-import { Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { SiInstagram, SiTiktok } from 'react-icons/si';
-import { ServiceType } from '../backend';
+import { AlertCircle, CheckCircle, MapPin, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import { SiInstagram, SiTiktok } from "react-icons/si";
+import { ServiceType } from "../backend";
 
-const serviceOptions = [
-  { value: ServiceType.exteriorOnly, label: 'Basic Exterior Wash — $35' },
-  { value: ServiceType.interiorOnly, label: 'Basic Interior Clean — $45' },
-  { value: ServiceType.standardDetail, label: 'Exterior Detail — $60' },
-  { value: ServiceType.premiumDetail, label: 'Interior Detail — $60' },
-  { value: ServiceType.ceramicCoating, label: 'Full Detail Package (Exterior + Interior) — $120' },
-  { value: ServiceType.rvWash, label: 'Premium Ceramic Coating — Contact for Quote' },
-  { value: ServiceType.motorcycleDetail, label: 'Headlight Restoration — Call for Quote' },
+const serviceOptions: { value: string; label: string; group?: string }[] = [
+  // Packages
+  {
+    value: ServiceType.exteriorOnly,
+    label:
+      "Level 1 – Street Starter (Sedans: $120 / SUVs: $150 / Large SUVs: $170)",
+    group: "packages",
+  },
+  {
+    value: ServiceType.interiorOnly,
+    label:
+      "Level 2 – Street Elite — Most Popular (Sedans: $220 / SUVs: $260 / Large SUVs: $300)",
+    group: "packages",
+  },
+  {
+    value: ServiceType.standardDetail,
+    label:
+      "Level 3 – Street Gloss (Sedans: $500 / SUVs: $600 / Large SUVs: $700)",
+    group: "packages",
+  },
+  {
+    value: ServiceType.premiumDetail,
+    label:
+      "Level 4 – Street Shiner Signature (Sedans: $900 / SUVs: $1,050 / Large SUVs: $1,200)",
+    group: "packages",
+  },
+  // Add-Ons
+  {
+    value: "addon_gloss_enhancement",
+    label: "Add-On: Street Gloss Enhancement (Polish) — Starting at $150",
+    group: "addons",
+  },
+  {
+    value: "addon_trim_revival",
+    label: "Add-On: Street Trim Revival — Starting at $60",
+    group: "addons",
+  },
+  {
+    value: "addon_headlights",
+    label: "Add-On: Street Vision Restore (Headlights) — Starting at $80",
+    group: "addons",
+  },
+  {
+    value: "addon_wheel_clean",
+    label: "Add-On: Street Dust Reset (Wheel Deep Clean) — Starting at $75",
+    group: "addons",
+  },
+  {
+    value: "addon_engine_detail",
+    label: "Add-On: Street Engine Detail — Starting at $60",
+    group: "addons",
+  },
 ];
 
 interface FormData {
   name: string;
   phone: string;
   email: string;
-  serviceType: ServiceType | '';
+  serviceType: string;
   vehicleInfo: string;
   preferredDate: string;
   preferredTime: string;
@@ -35,13 +79,13 @@ interface FormErrors {
 
 // Base input class: light background, dark text, visible border, good tap target
 const baseInputClass =
-  'w-full bg-white border rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors';
+  "w-full bg-white border rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors";
 
 const validInputClass = `${baseInputClass} border-gray-300 focus:border-brand-blue focus:ring-brand-blue/20`;
 const errorInputClass = `${baseInputClass} border-brand-pink focus:border-brand-pink focus:ring-brand-pink/20`;
 
 const baseSelectClass =
-  'w-full bg-white border rounded-lg px-4 py-3 text-gray-900 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors appearance-none cursor-pointer';
+  "w-full bg-white border rounded-lg px-4 py-3 text-gray-900 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors appearance-none cursor-pointer";
 
 const validSelectClass = `${baseSelectClass} border-gray-300 focus:border-brand-blue focus:ring-brand-blue/20`;
 const errorSelectClass = `${baseSelectClass} border-brand-pink focus:border-brand-pink focus:ring-brand-pink/20`;
@@ -49,7 +93,10 @@ const errorSelectClass = `${baseSelectClass} border-brand-pink focus:border-bran
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
   return (
-    <p className="mt-1.5 text-xs font-semibold flex items-center gap-1" style={{ color: '#FF007F' }}>
+    <p
+      className="mt-1.5 text-xs font-semibold flex items-center gap-1"
+      style={{ color: "#FF007F" }}
+    >
       <AlertCircle className="w-3 h-3 shrink-0" />
       {message}
     </p>
@@ -61,19 +108,19 @@ function validateEmail(email: string): boolean {
 }
 
 function validatePhone(phone: string): boolean {
-  return phone.replace(/\D/g, '').length >= 7;
+  return phone.replace(/\D/g, "").length >= 7;
 }
 
 export default function ContactBooking() {
   const [form, setForm] = useState<FormData>({
-    name: '',
-    phone: '',
-    email: '',
-    serviceType: '',
-    vehicleInfo: '',
-    preferredDate: '',
-    preferredTime: '',
-    notes: '',
+    name: "",
+    phone: "",
+    email: "",
+    serviceType: "",
+    vehicleInfo: "",
+    preferredDate: "",
+    preferredTime: "",
+    notes: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -85,7 +132,11 @@ export default function ContactBooking() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     // Clear error for this field as user types
@@ -96,31 +147,31 @@ export default function ContactBooking() {
     const newErrors: FormErrors = {};
 
     if (!form.name.trim()) {
-      newErrors.name = 'Full name is required';
+      newErrors.name = "Full name is required";
     }
 
     if (!form.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = "Phone number is required";
     } else if (!validatePhone(form.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
+      newErrors.phone = "Please enter a valid phone number";
     }
 
     if (!form.email.trim()) {
-      newErrors.email = 'Email address is required';
+      newErrors.email = "Email address is required";
     } else if (!validateEmail(form.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!form.serviceType) {
-      newErrors.serviceType = 'Please select a service';
+      newErrors.serviceType = "Please select a service";
     }
 
     if (!form.vehicleInfo.trim()) {
-      newErrors.vehicleInfo = 'Vehicle make & model is required';
+      newErrors.vehicleInfo = "Vehicle make & model is required";
     }
 
     if (!form.preferredDate) {
-      newErrors.preferredDate = 'Please select a preferred date';
+      newErrors.preferredDate = "Please select a preferred date";
     }
 
     return newErrors;
@@ -136,7 +187,7 @@ export default function ContactBooking() {
       const firstErrorField = Object.keys(validationErrors)[0];
       const el = document.querySelector(`[name="${firstErrorField}"]`);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
         (el as HTMLElement).focus();
       }
       return;
@@ -145,19 +196,15 @@ export default function ContactBooking() {
     setErrors({});
     setIsPending(true);
 
-    const serviceLabel = serviceOptions.find(o => o.value === form.serviceType)?.label ?? form.serviceType;
+    const serviceLabel =
+      serviceOptions.find((o) => o.value === form.serviceType)?.label ??
+      form.serviceType;
 
-    const subject = encodeURIComponent(`New Booking Request — ${form.name.trim()}`);
+    const subject = encodeURIComponent(
+      `New Booking Request — ${form.name.trim()}`,
+    );
     const body = encodeURIComponent(
-      `New Booking Request from LA Street Shine Website\n\n` +
-      `Name: ${form.name.trim()}\n` +
-      `Phone: ${form.phone.trim()}\n` +
-      `Email: ${form.email.trim()}\n` +
-      `Service: ${serviceLabel}\n` +
-      `Vehicle: ${form.vehicleInfo.trim()}\n` +
-      `Preferred Date: ${form.preferredDate}\n` +
-      `Preferred Time: ${form.preferredTime || 'Any time'}\n` +
-      `Notes: ${form.notes.trim() || 'None'}\n`
+      `New Booking Request from LA Street Shine Website\n\nName: ${form.name.trim()}\nPhone: ${form.phone.trim()}\nEmail: ${form.email.trim()}\nService: ${serviceLabel}\nVehicle: ${form.vehicleInfo.trim()}\nPreferred Date: ${form.preferredDate}\nPreferred Time: ${form.preferredTime || "Any time"}\nNotes: ${form.notes.trim() || "None"}\n`,
     );
 
     window.location.href = `mailto:lastreetshineautodetailing@gmail.com?subject=${subject}&body=${body}`;
@@ -166,21 +213,24 @@ export default function ContactBooking() {
       setIsPending(false);
       setSubmitted(true);
       setForm({
-        name: '',
-        phone: '',
-        email: '',
-        serviceType: '',
-        vehicleInfo: '',
-        preferredDate: '',
-        preferredTime: '',
-        notes: '',
+        name: "",
+        phone: "",
+        email: "",
+        serviceType: "",
+        vehicleInfo: "",
+        preferredDate: "",
+        preferredTime: "",
+        notes: "",
       });
       setErrors({});
     }, 1000);
   };
 
   return (
-    <section id="booking" className="py-24 bg-brand-darker relative overflow-hidden">
+    <section
+      id="booking"
+      className="py-24 bg-brand-darker relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 right-0 h-px section-divider" />
       <div className="absolute -top-40 right-0 w-96 h-96 rounded-full bg-brand-blue/5 blur-3xl pointer-events-none" />
 
@@ -189,7 +239,9 @@ export default function ContactBooking() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 mb-4">
             <Phone className="w-3.5 h-3.5 text-brand-blue-light" />
-            <span className="text-brand-blue-light text-xs font-bold tracking-widest uppercase">Book Now</span>
+            <span className="text-brand-blue-light text-xs font-bold tracking-widest uppercase">
+              Book Now
+            </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Ready for Your
@@ -197,7 +249,8 @@ export default function ContactBooking() {
             <span className="text-gradient-blue">Perfect Shine?</span>
           </h2>
           <p className="text-brand-gray text-lg max-w-2xl mx-auto">
-            Book your detail today. We come to you — anywhere in Los Angeles County.
+            Book your detail today. We come to you — anywhere in Los Angeles
+            County.
           </p>
         </div>
 
@@ -211,7 +264,9 @@ export default function ContactBooking() {
                   <Phone className="w-5 h-5 text-brand-blue-light" />
                 </div>
                 <div>
-                  <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold">Call or Text</p>
+                  <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold">
+                    Call or Text
+                  </p>
                   <a
                     href="tel:9094411114"
                     className="text-white font-black text-xl hover:text-brand-blue-light transition-colors"
@@ -224,7 +279,9 @@ export default function ContactBooking() {
 
             {/* Social */}
             <div className="p-6 rounded-xl glass-card">
-              <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-4">Follow Us</p>
+              <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-4">
+                Follow Us
+              </p>
               <div className="space-y-3">
                 <a
                   href="https://www.instagram.com/lastreetshineautodetail"
@@ -237,7 +294,9 @@ export default function ContactBooking() {
                   </div>
                   <div>
                     <p className="font-bold text-sm">Instagram</p>
-                    <p className="text-brand-gray text-xs">@lastreetshineautodetail</p>
+                    <p className="text-brand-gray text-xs">
+                      @lastreetshineautodetail
+                    </p>
                   </div>
                 </a>
                 <a
@@ -251,7 +310,9 @@ export default function ContactBooking() {
                   </div>
                   <div>
                     <p className="font-bold text-sm">TikTok</p>
-                    <p className="text-brand-gray text-xs">@lastreetshineautodetail</p>
+                    <p className="text-brand-gray text-xs">
+                      @lastreetshineautodetail
+                    </p>
                   </div>
                 </a>
               </div>
@@ -264,19 +325,33 @@ export default function ContactBooking() {
                   <MapPin className="w-5 h-5 text-brand-blue-light" />
                 </div>
                 <div>
-                  <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-1">Service Area</p>
-                  <p className="text-white font-bold text-sm">Serving Van Nuys, CA</p>
-                  <p className="text-brand-gray text-sm">and all of Los Angeles County</p>
-                  <p className="text-brand-blue-light text-xs font-semibold mt-1">We Come to You!</p>
+                  <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-1">
+                    Service Area
+                  </p>
+                  <p className="text-white font-bold text-sm">
+                    Serving Van Nuys, CA
+                  </p>
+                  <p className="text-brand-gray text-sm">
+                    and all of Los Angeles County
+                  </p>
+                  <p className="text-brand-blue-light text-xs font-semibold mt-1">
+                    We Come to You!
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Hours */}
             <div className="p-6 rounded-xl glass-card">
-              <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">Hours</p>
-              <p className="text-white font-bold">Mon – Sun: 8:00 AM – 6:00 PM</p>
-              <p className="text-brand-gray text-xs mt-1">Available by appointment</p>
+              <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
+                Hours
+              </p>
+              <p className="text-white font-bold">
+                Mon – Sun: 8:00 AM – 6:00 PM
+              </p>
+              <p className="text-brand-gray text-xs mt-1">
+                Available by appointment
+              </p>
             </div>
           </div>
 
@@ -286,9 +361,12 @@ export default function ContactBooking() {
               <div className="h-full flex items-center justify-center p-12 rounded-xl glass-card border-brand-blue/30">
                 <div className="text-center">
                   <CheckCircle className="w-16 h-16 text-brand-blue-light mx-auto mb-4" />
-                  <h3 className="text-white font-black text-2xl mb-2">Booking Received!</h3>
+                  <h3 className="text-white font-black text-2xl mb-2">
+                    Booking Received!
+                  </h3>
                   <p className="text-brand-gray mb-6">
-                    Thank you! We'll reach out to confirm your appointment shortly.
+                    Thank you! We'll reach out to confirm your appointment
+                    shortly.
                   </p>
                   <button
                     type="button"
@@ -300,17 +378,27 @@ export default function ContactBooking() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="p-6 md:p-8 rounded-xl glass-card space-y-5">
-                <h3 className="text-white font-black text-xl mb-2">Book Your Detail</h3>
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                className="p-6 md:p-8 rounded-xl glass-card space-y-5"
+              >
+                <h3 className="text-white font-black text-xl mb-2">
+                  Book Your Detail
+                </h3>
                 <p className="text-brand-gray text-xs mb-4">
-                  Fields marked with <span style={{ color: '#FF007F' }}>*</span> are required.
+                  Fields marked with <span style={{ color: "#FF007F" }}>*</span>{" "}
+                  are required.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Full Name */}
                   <div>
-                    <label htmlFor="booking-name" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                      Full Name <span style={{ color: '#FF007F' }}>*</span>
+                    <label
+                      htmlFor="booking-name"
+                      className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                    >
+                      Full Name <span style={{ color: "#FF007F" }}>*</span>
                     </label>
                     <input
                       id="booking-name"
@@ -319,17 +407,22 @@ export default function ContactBooking() {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="John Smith"
-                      className={errors.name ? errorInputClass : validInputClass}
+                      className={
+                        errors.name ? errorInputClass : validInputClass
+                      }
                       aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? 'error-name' : undefined}
+                      aria-describedby={errors.name ? "error-name" : undefined}
                     />
                     <FieldError message={errors.name} />
                   </div>
 
                   {/* Phone */}
                   <div>
-                    <label htmlFor="booking-phone" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                      Phone Number <span style={{ color: '#FF007F' }}>*</span>
+                    <label
+                      htmlFor="booking-phone"
+                      className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                    >
+                      Phone Number <span style={{ color: "#FF007F" }}>*</span>
                     </label>
                     <input
                       id="booking-phone"
@@ -338,7 +431,9 @@ export default function ContactBooking() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="(555) 000-0000"
-                      className={errors.phone ? errorInputClass : validInputClass}
+                      className={
+                        errors.phone ? errorInputClass : validInputClass
+                      }
                       aria-invalid={!!errors.phone}
                     />
                     <FieldError message={errors.phone} />
@@ -347,8 +442,11 @@ export default function ContactBooking() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="booking-email" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                    Email Address <span style={{ color: '#FF007F' }}>*</span>
+                  <label
+                    htmlFor="booking-email"
+                    className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                  >
+                    Email Address <span style={{ color: "#FF007F" }}>*</span>
                   </label>
                   <input
                     id="booking-email"
@@ -365,8 +463,11 @@ export default function ContactBooking() {
 
                 {/* Service Type */}
                 <div>
-                  <label htmlFor="booking-service" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                    Service Type <span style={{ color: '#FF007F' }}>*</span>
+                  <label
+                    htmlFor="booking-service"
+                    className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                  >
+                    Service Type <span style={{ color: "#FF007F" }}>*</span>
                   </label>
                   <div className="relative">
                     <select
@@ -374,19 +475,48 @@ export default function ContactBooking() {
                       name="serviceType"
                       value={form.serviceType}
                       onChange={handleChange}
-                      className={errors.serviceType ? errorSelectClass : validSelectClass}
+                      className={
+                        errors.serviceType ? errorSelectClass : validSelectClass
+                      }
                       aria-invalid={!!errors.serviceType}
                     >
                       <option value="">Select a service...</option>
-                      {serviceOptions.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
+                      <optgroup label="— Detailing Packages —">
+                        {serviceOptions
+                          .filter((o) => o.group === "packages")
+                          .map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                      </optgroup>
+                      <optgroup label="— Add-On Services —">
+                        {serviceOptions
+                          .filter((o) => o.group === "addons")
+                          .map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                      </optgroup>
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center" aria-hidden="true">
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <div
+                      className="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        className="w-4 h-4 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -395,8 +525,12 @@ export default function ContactBooking() {
 
                 {/* Vehicle Info */}
                 <div>
-                  <label htmlFor="booking-vehicle" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                    Vehicle Make & Model <span style={{ color: '#FF007F' }}>*</span>
+                  <label
+                    htmlFor="booking-vehicle"
+                    className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                  >
+                    Vehicle Make & Model{" "}
+                    <span style={{ color: "#FF007F" }}>*</span>
                   </label>
                   <input
                     id="booking-vehicle"
@@ -405,7 +539,9 @@ export default function ContactBooking() {
                     value={form.vehicleInfo}
                     onChange={handleChange}
                     placeholder="e.g. 2022 Toyota Camry"
-                    className={errors.vehicleInfo ? errorInputClass : validInputClass}
+                    className={
+                      errors.vehicleInfo ? errorInputClass : validInputClass
+                    }
                     aria-invalid={!!errors.vehicleInfo}
                   />
                   <FieldError message={errors.vehicleInfo} />
@@ -414,8 +550,11 @@ export default function ContactBooking() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Preferred Date */}
                   <div>
-                    <label htmlFor="booking-date" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
-                      Preferred Date <span style={{ color: '#FF007F' }}>*</span>
+                    <label
+                      htmlFor="booking-date"
+                      className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                    >
+                      Preferred Date <span style={{ color: "#FF007F" }}>*</span>
                     </label>
                     <input
                       id="booking-date"
@@ -423,8 +562,10 @@ export default function ContactBooking() {
                       name="preferredDate"
                       value={form.preferredDate}
                       onChange={handleChange}
-                      min={new Date().toISOString().split('T')[0]}
-                      className={errors.preferredDate ? errorInputClass : validInputClass}
+                      min={new Date().toISOString().split("T")[0]}
+                      className={
+                        errors.preferredDate ? errorInputClass : validInputClass
+                      }
                       aria-invalid={!!errors.preferredDate}
                     />
                     <FieldError message={errors.preferredDate} />
@@ -432,7 +573,10 @@ export default function ContactBooking() {
 
                   {/* Preferred Time */}
                   <div>
-                    <label htmlFor="booking-time" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
+                    <label
+                      htmlFor="booking-time"
+                      className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                    >
                       Preferred Time
                     </label>
                     <div className="relative">
@@ -455,9 +599,23 @@ export default function ContactBooking() {
                         <option value="4:00 PM">4:00 PM</option>
                         <option value="5:00 PM">5:00 PM</option>
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center" aria-hidden="true">
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <div
+                        className="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+                        aria-hidden="true"
+                      >
+                        <svg
+                          className="w-4 h-4 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -466,7 +624,10 @@ export default function ContactBooking() {
 
                 {/* Notes */}
                 <div>
-                  <label htmlFor="booking-notes" className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
+                  <label
+                    htmlFor="booking-notes"
+                    className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
+                  >
                     Additional Notes
                   </label>
                   <textarea
@@ -480,24 +641,35 @@ export default function ContactBooking() {
                   />
                 </div>
 
-
-
                 <button
                   type="submit"
                   disabled={isPending}
                   className="w-full py-4 rounded-xl text-base font-black flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:-translate-y-0.5"
                   style={{
-                    background: 'linear-gradient(135deg, oklch(0.5 0.22 250), oklch(0.45 0.2 260))',
-                    color: '#fff',
-                    border: '1px solid oklch(0.65 0.22 250 / 0.5)',
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
+                    background:
+                      "linear-gradient(135deg, oklch(0.5 0.22 250), oklch(0.45 0.2 260))",
+                    color: "#fff",
+                    border: "1px solid oklch(0.65 0.22 250 / 0.5)",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
                   }}
                 >
                   {isPending ? (
                     <>
-                      <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <svg
+                        className="animate-spin w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
                         <path
                           className="opacity-75"
                           fill="currentColor"

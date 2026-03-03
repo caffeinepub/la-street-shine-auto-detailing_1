@@ -1,10 +1,12 @@
-import { Zap } from 'lucide-react';
-import { SiInstagram, SiTiktok } from 'react-icons/si';
-import { Heart } from 'lucide-react';
+import { Zap } from "lucide-react";
+import { Heart } from "lucide-react";
+import { SiInstagram, SiTiktok } from "react-icons/si";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const appId = encodeURIComponent(typeof window !== 'undefined' ? window.location.hostname : 'lastreetshine');
+  const appId = encodeURIComponent(
+    typeof window !== "undefined" ? window.location.hostname : "lastreetshine",
+  );
 
   return (
     <footer className="bg-brand-black border-t border-brand-blue/20 pt-12 pb-8">
@@ -54,7 +56,9 @@ export default function Footer() {
             © {year} LA Street Shine Auto Detailing. All rights reserved.
           </p>
           <p className="text-brand-gray text-xs flex items-center gap-1">
-            Built with <Heart className="w-3 h-3 text-brand-pink-light fill-brand-pink-light" /> using{' '}
+            Built with{" "}
+            <Heart className="w-3 h-3 text-brand-pink-light fill-brand-pink-light" />{" "}
+            using{" "}
             <a
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
               target="_blank"
