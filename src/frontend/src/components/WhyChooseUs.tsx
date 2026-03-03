@@ -56,21 +56,21 @@ export default function WhyChooseUs() {
       <div className="absolute -bottom-40 right-0 w-96 h-96 rounded-full bg-brand-pink/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-12">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8 md:p-12">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-pink/30 bg-brand-pink/10 mb-4">
               <ThumbsUp className="w-3.5 h-3.5 text-brand-pink-light" />
               <span className="text-brand-pink-light text-xs font-bold tracking-widest uppercase">
                 Why Choose Us
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
               The LA Street Shine
               <br />
               <span className="text-gradient-pink">Difference</span>
             </h2>
-            <p className="text-brand-gray text-lg max-w-2xl mx-auto">
+            <p className="text-brand-gray text-base sm:text-lg max-w-2xl mx-auto">
               We're not just another detailing service. We're your trusted
               partner in keeping your vehicle looking its absolute best.
             </p>
@@ -89,9 +89,9 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Referral & Loyalty Rewards */}
-          <div className="mt-12">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-black text-white">
+          <div className="mt-10 md:mt-12">
+            <div className="text-center mb-6 md:mb-8">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white">
                 Exclusive Client{" "}
                 <span className="text-gradient-brand">Rewards</span>
               </h3>
@@ -99,10 +99,10 @@ export default function WhyChooseUs() {
                 We take care of the people who take care of us.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-3xl mx-auto">
               {/* Referral Reward */}
               <div
-                className="relative p-6 rounded-xl overflow-hidden group hover:scale-[1.02] transition-all duration-300"
+                className="relative p-5 sm:p-6 rounded-xl overflow-hidden group hover:scale-[1.02] transition-all duration-300"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(0,102,255,0.12) 0%, rgba(0,0,0,0.6) 100%)",
@@ -135,7 +135,7 @@ export default function WhyChooseUs() {
 
               {/* Loyalty Discount */}
               <div
-                className="relative p-6 rounded-xl overflow-hidden group hover:scale-[1.02] transition-all duration-300"
+                className="relative p-5 sm:p-6 rounded-xl overflow-hidden group hover:scale-[1.02] transition-all duration-300"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(255,0,127,0.12) 0%, rgba(0,0,0,0.6) 100%)",
@@ -177,9 +177,9 @@ export default function WhyChooseUs() {
 
 function ReasonCard({ reason }: { reason: (typeof reasons)[0] }) {
   return (
-    <div className="p-6 rounded-xl glass-card hover:scale-[1.02] transition-all duration-300 group">
+    <div className="p-5 sm:p-6 rounded-xl glass-card hover:scale-[1.02] transition-all duration-300 group">
       <div
-        className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 ${
+        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300 group-hover:scale-110 ${
           reason.color === "blue"
             ? "bg-brand-blue/20 text-brand-blue-light group-hover:bg-brand-blue/30"
             : "bg-brand-pink/20 text-brand-pink-light group-hover:bg-brand-pink/30"
@@ -187,9 +187,11 @@ function ReasonCard({ reason }: { reason: (typeof reasons)[0] }) {
       >
         {reason.icon}
       </div>
-      <h3 className="text-white font-black text-xl mb-0.5">{reason.title}</h3>
+      <h3 className="text-white font-black text-lg sm:text-xl mb-0.5">
+        {reason.title}
+      </h3>
       <p
-        className={`text-sm font-bold mb-3 ${
+        className={`text-sm font-bold mb-2 sm:mb-3 ${
           reason.color === "blue"
             ? "text-brand-blue-light"
             : "text-brand-pink-light"

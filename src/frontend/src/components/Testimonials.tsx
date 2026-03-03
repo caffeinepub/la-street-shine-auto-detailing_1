@@ -41,10 +41,10 @@ interface Testimonial {
 // -- TestimonialCard -------------------------------------------------------
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <div className="p-6 rounded-xl glass-card hover:border-brand-pink/30 transition-all duration-300 group flex flex-col">
-      <Quote className="w-8 h-8 text-brand-pink/30 mb-4 group-hover:text-brand-pink/50 transition-colors" />
+    <div className="p-5 sm:p-6 rounded-xl glass-card hover:border-brand-pink/30 transition-all duration-300 group flex flex-col">
+      <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-brand-pink/30 mb-3 sm:mb-4 group-hover:text-brand-pink/50 transition-colors" />
 
-      <div className="flex gap-1 mb-4">
+      <div className="flex gap-1 mb-3 sm:mb-4">
         {[1, 2, 3, 4, 5].slice(0, t.rating).map((star) => (
           <Star
             key={`star-${t.name}-${star}`}
@@ -53,18 +53,20 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         ))}
       </div>
 
-      <p className="text-brand-gray text-sm leading-relaxed flex-1 mb-6 italic">
+      <p className="text-brand-gray text-sm leading-relaxed flex-1 mb-5 sm:mb-6 italic">
         &ldquo;{t.text}&rdquo;
       </p>
 
       <div className="border-t border-white/5 pt-4">
-        <div className="flex items-start justify-between gap-2 flex-wrap">
-          <div>
-            <p className="text-white font-bold text-sm">{t.name}</p>
-            <p className="text-brand-gray text-xs">{t.location}</p>
-            <p className="text-zinc-500 text-xs mt-0.5">{t.vehicle}</p>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-start justify-between gap-2 flex-wrap">
+            <div>
+              <p className="text-white font-bold text-sm">{t.name}</p>
+              <p className="text-brand-gray text-xs">{t.location}</p>
+              <p className="text-zinc-500 text-xs mt-0.5">{t.vehicle}</p>
+            </div>
           </div>
-          <span className="text-xs text-brand-pink-light font-semibold bg-brand-pink/10 border border-brand-pink/20 px-2 py-1 rounded-full whitespace-nowrap">
+          <span className="self-start text-xs text-brand-pink-light font-semibold bg-brand-pink/10 border border-brand-pink/20 px-2 py-1 rounded-full">
             {t.service}
           </span>
         </div>
@@ -85,7 +87,7 @@ export default function Testimonials() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-pink/30 bg-brand-pink/10 mb-4">
             <Star className="w-3.5 h-3.5 text-brand-pink-light" />
             <span
@@ -95,19 +97,19 @@ export default function Testimonials() {
               Reviews
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             What Our Customers
             <br />
             <span className="text-gradient-pink">Are Saying</span>
           </h2>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto">
+          <p className="text-brand-gray text-base sm:text-lg max-w-2xl mx-auto">
             Don&apos;t take our word for it &mdash; hear from the customers who
             trust us with their vehicles.
           </p>
         </div>
 
         {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {STATIC_TESTIMONIALS.map((t) => (
             <TestimonialCard key={t.name} t={t} />
           ))}

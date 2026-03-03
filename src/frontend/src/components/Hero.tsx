@@ -67,21 +67,21 @@ export default function Hero() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto">
+        <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-2 sm:gap-6 max-w-xs sm:max-w-lg mx-auto">
           {[
             { value: "100%", label: "Mobile Service" },
             { value: "5★", label: "Rated Service" },
             { value: "LA", label: "County Wide" },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div key={stat.label} className="text-center px-1">
               <div
-                className="text-2xl font-black"
+                className="text-xl sm:text-2xl font-black"
                 style={{ color: "oklch(0.65 0.22 250)" }}
               >
                 {stat.value}
               </div>
               <div
-                className="text-xs uppercase tracking-wider font-semibold mt-1"
+                className="text-xs uppercase tracking-wide font-semibold mt-1 leading-tight"
                 style={{ color: "#ffffff" }}
               >
                 {stat.label}

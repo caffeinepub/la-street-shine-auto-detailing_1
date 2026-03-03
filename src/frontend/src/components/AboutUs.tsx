@@ -12,8 +12,8 @@ export default function AboutUs() {
       <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-brand-pink/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8 md:p-12">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left: Story */}
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 mb-6">
@@ -23,27 +23,27 @@ export default function AboutUs() {
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 sm:mb-6 leading-tight">
                 Built From Passion,
                 <br />
                 <span className="text-gradient-pink">Driven by Dreams.</span>
               </h2>
 
               <div className="space-y-4 text-brand-gray leading-relaxed">
-                <p className="text-base md:text-lg">
+                <p className="text-sm sm:text-base md:text-lg">
                   LA Street Shine was born from the grit and determination of
                   two cousins who refused to let tough times stop their dream.
                   We started with broken equipment, barely enough money to get
                   going, and a burning passion for working on cool cars.
                 </p>
-                <p className="text-base md:text-lg">
+                <p className="text-sm sm:text-base md:text-lg">
                   We drove around with tools that needed fixing — but we never
                   took them to the shop because we couldn't afford it. We pushed
                   through, kept working, and kept grinding. Our parents believed
                   in us when we barely believed in ourselves — helping us find
                   our first clients, supplying products, and fueling our dream.
                 </p>
-                <p className="text-base md:text-lg">
+                <p className="text-sm sm:text-base md:text-lg">
                   Today, that same hustle and heart goes into every single
                   detail we perform. We don't just clean cars — we restore
                   pride, protect investments, and deliver results that speak for

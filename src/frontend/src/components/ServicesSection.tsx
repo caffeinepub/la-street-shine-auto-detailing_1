@@ -57,33 +57,33 @@ export default function ServicesSection() {
       <div className="absolute -top-60 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-brand-blue/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-12">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8 md:p-12">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 mb-4">
               <Sparkles className="w-3.5 h-3.5 text-brand-blue-light" />
               <span className="text-brand-blue-light text-xs font-bold tracking-widest uppercase">
                 Our Detailing Packages
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
               Premium Detailing
               <br />
               <span className="text-gradient-blue">At Every Level</span>
             </h2>
-            <p className="text-brand-gray text-lg max-w-2xl mx-auto">
+            <p className="text-brand-gray text-base sm:text-lg max-w-2xl mx-auto">
               From a quick refresh to a full luxury ceramic coating — we have
               the perfect package for your vehicle and budget.
             </p>
           </div>
 
           {/* Packages Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-6">
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
                 data-ocid={`services.package.${pkg.level.toLowerCase().replace(" ", "")}.card`}
-                className={`relative p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] group border-2 bg-white/[0.03] backdrop-blur-sm ${
+                className={`relative p-5 sm:p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] group border-2 bg-white/[0.03] backdrop-blur-sm ${
                   pkg.popular
                     ? "border-brand-blue glow-blue shadow-[0_0_24px_rgba(59,130,246,0.25)]"
                     : pkg.color === "pink"
@@ -97,9 +97,9 @@ export default function ServicesSection() {
                   </div>
                 )}
 
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-start gap-3 sm:gap-4 mb-4">
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${
+                    className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${
                       pkg.color === "blue"
                         ? "bg-brand-blue/20 text-brand-blue-light"
                         : "bg-brand-pink/20 text-brand-pink-light"
@@ -117,7 +117,7 @@ export default function ServicesSection() {
                     >
                       {pkg.level}
                     </p>
-                    <h3 className="text-white font-black text-xl">
+                    <h3 className="text-white font-black text-lg sm:text-xl">
                       {pkg.name}
                     </h3>
                   </div>
@@ -127,41 +127,70 @@ export default function ServicesSection() {
                   {pkg.desc}
                 </p>
 
-                {/* Price table */}
+                {/* Price table — stacked rows on mobile, columns on sm+ */}
                 <div className="border border-white/10 rounded-xl overflow-hidden">
-                  <div className="grid grid-cols-3 text-xs font-bold text-brand-gray bg-white/5 px-4 py-2 uppercase tracking-wider">
-                    <span>Sedan</span>
-                    <span className="text-center">SUV / Truck</span>
-                    <span className="text-right">Large SUV</span>
+                  {/* Mobile: stacked rows */}
+                  <div className="sm:hidden divide-y divide-white/10">
+                    {[
+                      { label: "Sedan", price: pkg.prices.sedan },
+                      { label: "SUV / Truck", price: pkg.prices.suv },
+                      { label: "Large SUV", price: pkg.prices.largeSuv },
+                    ].map((row) => (
+                      <div
+                        key={row.label}
+                        className="flex items-center justify-between px-4 py-3"
+                      >
+                        <span className="text-xs font-bold text-brand-gray uppercase tracking-wider">
+                          {row.label}
+                        </span>
+                        <span
+                          className={`text-xl font-black ${
+                            pkg.color === "blue"
+                              ? "text-brand-blue-light"
+                              : "text-brand-pink-light"
+                          }`}
+                        >
+                          {row.price}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="grid grid-cols-3 px-4 py-3">
-                    <span
-                      className={`text-lg font-black ${
-                        pkg.color === "blue"
-                          ? "text-brand-blue-light"
-                          : "text-brand-pink-light"
-                      }`}
-                    >
-                      {pkg.prices.sedan}
-                    </span>
-                    <span
-                      className={`text-lg font-black text-center ${
-                        pkg.color === "blue"
-                          ? "text-brand-blue-light"
-                          : "text-brand-pink-light"
-                      }`}
-                    >
-                      {pkg.prices.suv}
-                    </span>
-                    <span
-                      className={`text-lg font-black text-right ${
-                        pkg.color === "blue"
-                          ? "text-brand-blue-light"
-                          : "text-brand-pink-light"
-                      }`}
-                    >
-                      {pkg.prices.largeSuv}
-                    </span>
+                  {/* Desktop: 3-column layout */}
+                  <div className="hidden sm:block">
+                    <div className="grid grid-cols-3 text-xs font-bold text-brand-gray bg-white/5 px-4 py-2 uppercase tracking-wider">
+                      <span>Sedan</span>
+                      <span className="text-center">SUV / Truck</span>
+                      <span className="text-right">Large SUV</span>
+                    </div>
+                    <div className="grid grid-cols-3 px-4 py-3">
+                      <span
+                        className={`text-lg font-black ${
+                          pkg.color === "blue"
+                            ? "text-brand-blue-light"
+                            : "text-brand-pink-light"
+                        }`}
+                      >
+                        {pkg.prices.sedan}
+                      </span>
+                      <span
+                        className={`text-lg font-black text-center ${
+                          pkg.color === "blue"
+                            ? "text-brand-blue-light"
+                            : "text-brand-pink-light"
+                        }`}
+                      >
+                        {pkg.prices.suv}
+                      </span>
+                      <span
+                        className={`text-lg font-black text-right ${
+                          pkg.color === "blue"
+                            ? "text-brand-blue-light"
+                            : "text-brand-pink-light"
+                        }`}
+                      >
+                        {pkg.prices.largeSuv}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,23 +198,23 @@ export default function ServicesSection() {
           </div>
 
           {/* Add-On Services */}
-          <div className="mt-12">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="mt-10 md:mt-12">
+            <div className="flex items-center gap-3 mb-5 md:mb-6">
               <Plus className="w-5 h-5 text-brand-pink-light" />
-              <h3 className="text-2xl font-black text-white">
+              <h3 className="text-xl sm:text-2xl font-black text-white">
                 Add-On Services
               </h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {addOns.map((addon) => (
                 <div
                   key={addon.name}
-                  className="flex items-center justify-between p-4 rounded-xl border border-brand-pink/40 bg-white/[0.03] hover:border-brand-pink/70 hover:shadow-[0_0_12px_rgba(236,72,153,0.15)] transition-all duration-200"
+                  className="flex items-center justify-between p-4 rounded-xl border border-brand-pink/40 bg-white/[0.03] hover:border-brand-pink/70 hover:shadow-[0_0_12px_rgba(236,72,153,0.15)] transition-all duration-200 gap-3"
                 >
-                  <span className="text-white text-sm font-semibold pr-3">
+                  <span className="text-white text-sm font-semibold leading-snug">
                     {addon.name}
                   </span>
-                  <span className="text-brand-pink-light text-sm font-bold whitespace-nowrap">
+                  <span className="text-brand-pink-light text-sm font-bold whitespace-nowrap shrink-0">
                     {addon.price}
                   </span>
                 </div>
@@ -194,17 +223,17 @@ export default function ServicesSection() {
           </div>
 
           {/* Disclaimer */}
-          <div className="mt-12 flex justify-center">
-            <div className="relative flex items-start gap-4 px-6 py-5 rounded-2xl border-2 border-yellow-400/70 bg-yellow-400/10 shadow-[0_0_30px_rgba(250,204,21,0.25)] max-w-xl w-full">
+          <div className="mt-10 md:mt-12 flex justify-center">
+            <div className="relative flex items-start gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border-2 border-yellow-400/70 bg-yellow-400/10 shadow-[0_0_30px_rgba(250,204,21,0.25)] max-w-xl w-full">
               {/* Glowing triangle icon */}
-              <div className="flex-shrink-0 flex flex-col items-center">
+              <div className="flex-shrink-0 flex flex-col items-center pt-0.5">
                 <AlertTriangle
-                  className="w-10 h-10 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.9)]"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.9)]"
                   strokeWidth={2.5}
                 />
               </div>
               <div>
-                <p className="text-yellow-300 font-black text-base uppercase tracking-widest mb-1">
+                <p className="text-yellow-300 font-black text-sm sm:text-base uppercase tracking-widest mb-1">
                   Pricing Notice
                 </p>
                 <p className="text-yellow-100 text-sm leading-relaxed font-medium">

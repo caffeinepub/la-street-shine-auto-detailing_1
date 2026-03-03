@@ -236,27 +236,27 @@ export default function ContactBooking() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 mb-4">
             <Phone className="w-3.5 h-3.5 text-brand-blue-light" />
             <span className="text-brand-blue-light text-xs font-bold tracking-widest uppercase">
               Book Now
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             Ready for Your
             <br />
             <span className="text-gradient-blue">Perfect Shine?</span>
           </h2>
-          <p className="text-brand-gray text-lg max-w-2xl mx-auto">
+          <p className="text-brand-gray text-base sm:text-lg max-w-2xl mx-auto">
             Book your detail today. We come to you — anywhere in Los Angeles
             County.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Phone */}
             <div className="p-6 rounded-xl glass-card">
               <div className="flex items-center gap-3 mb-3">
@@ -381,7 +381,7 @@ export default function ContactBooking() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="p-6 md:p-8 rounded-xl glass-card space-y-5"
+                className="p-5 sm:p-6 md:p-8 rounded-xl glass-card space-y-4 sm:space-y-5"
               >
                 <h3 className="text-white font-black text-xl mb-2">
                   Book Your Detail
