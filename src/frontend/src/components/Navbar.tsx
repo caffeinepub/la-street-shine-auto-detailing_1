@@ -6,7 +6,6 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Why Us", href: "#why-us" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -38,7 +37,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-brand-black/95 backdrop-blur-md shadow-lg border-b border-brand-blue/20"
-          : "bg-transparent"
+          : "bg-brand-black/70 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +49,7 @@ export default function Navbar() {
             className="flex items-center focus:outline-none"
             aria-label="LA Street Shine - scroll to top"
           >
-            <span className="font-montserrat font-black text-lg md:text-xl text-brand-blue-light tracking-tight leading-tight">
+            <span className="font-montserrat font-black text-lg md:text-xl text-white tracking-tight leading-tight">
               LA Street Shine
               <span className="hidden sm:inline text-white font-semibold text-base">
                 {" "}
@@ -66,15 +65,25 @@ export default function Navbar() {
                 key={link.href}
                 type="button"
                 onClick={() => handleNavClick(link.href)}
-                className="px-4 py-2 text-sm font-semibold text-brand-gray hover:text-brand-blue-light transition-colors duration-200 tracking-wide uppercase relative group"
+                className="px-4 py-2 text-sm font-semibold text-white hover:text-brand-blue-light transition-colors duration-200 tracking-wide uppercase relative group"
+                style={{ color: "#ffffff" }}
+                data-ocid={`nav.${link.label.toLowerCase().replace(" ", "_")}.link`}
               >
                 {link.label}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-pink group-hover:w-full transition-all duration-300" />
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => handleNavClick("#booking")}
+              data-ocid="nav.book_detail.button"
+              className="ml-2 px-5 py-2 bg-brand-pink hover:bg-pink-600 text-white font-bold rounded text-sm tracking-wide uppercase transition-colors duration-200 shadow-md shadow-pink-900/40"
+            >
+              Book a Detail
+            </button>
             <a
               href="tel:9094411114"
-              className="ml-4 px-5 py-2 btn-blue rounded text-sm"
+              className="ml-2 px-5 py-2 btn-blue rounded text-sm"
             >
               Call Now
             </a>
@@ -101,14 +110,23 @@ export default function Navbar() {
                 key={link.href}
                 type="button"
                 onClick={() => handleNavClick(link.href)}
-                className="block w-full text-left px-4 py-3 text-sm font-semibold text-brand-gray hover:text-brand-blue-light hover:bg-brand-blue/10 rounded transition-colors uppercase tracking-wide"
+                className="block w-full text-left px-4 py-3 text-sm font-semibold text-white hover:text-brand-blue-light hover:bg-brand-blue/10 rounded transition-colors uppercase tracking-wide"
+                style={{ color: "#ffffff" }}
               >
                 {link.label}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => handleNavClick("#booking")}
+              data-ocid="nav.book_detail_mobile.button"
+              className="block w-full mt-2 px-4 py-3 bg-brand-pink hover:bg-pink-600 text-white font-bold rounded text-center text-sm tracking-wide uppercase transition-colors duration-200"
+            >
+              Book a Detail
+            </button>
             <a
               href="tel:9094411114"
-              className="block mt-3 px-4 py-3 btn-blue rounded text-center text-sm"
+              className="block mt-2 px-4 py-3 btn-blue rounded text-center text-sm"
             >
               Call (909) 441-1114
             </a>
