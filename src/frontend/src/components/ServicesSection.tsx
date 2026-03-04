@@ -240,9 +240,7 @@ export default function ServicesSection() {
                   Prices shown are base rates and{" "}
                   <span className="text-yellow-300 font-black">may vary</span>{" "}
                   based on your vehicle's size and condition. Contact us for a{" "}
-                  <span className="text-yellow-300 font-black">
-                    free accurate quote
-                  </span>{" "}
+                  <span className="text-yellow-300 font-black">free quote</span>{" "}
                   before booking.
                 </p>
               </div>
