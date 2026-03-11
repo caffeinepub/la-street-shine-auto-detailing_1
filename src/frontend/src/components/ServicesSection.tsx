@@ -1,6 +1,21 @@
 import { AlertTriangle, Crown, Plus, Sparkles, Star, Zap } from "lucide-react";
 
-const packages = [
+type BulletSection = {
+  heading: string;
+  items: string[];
+};
+
+type Package = {
+  level: string;
+  name: string;
+  icon: React.ReactNode;
+  color: "blue" | "pink";
+  popular: boolean;
+  prices: { sedan: string; suv: string; largeSuv: string };
+  sections: BulletSection[];
+};
+
+const packages: Package[] = [
   {
     level: "Level 1",
     name: "Street Starter",
@@ -8,7 +23,29 @@ const packages = [
     color: "blue",
     popular: false,
     prices: { sedan: "$120", suv: "$150", largeSuv: "$170" },
-    desc: "Hand wash, wheels cleaned, tire shine, light interior cleaning, and glass cleaned.",
+    sections: [
+      {
+        heading: "🧼 Exterior Includes",
+        items: [
+          "Pressure rinse to remove loose debris",
+          "Foam pre-soak & safe hand wash (2-bucket method)",
+          "Wheels, barrels & tires deep cleaned",
+          "Tire dressing applied (clean satin finish)",
+          "Door jambs wiped down",
+          "Exterior glass cleaned streak-free",
+        ],
+      },
+      {
+        heading: "🧽 Interior Includes",
+        items: [
+          "Full interior vacuum (seats, carpets, trunk)",
+          "Crevice blow-out (vents & tight areas)",
+          "Dashboard, console & door panels wiped down",
+          "Light interior surface cleaning",
+          "Interior glass cleaned",
+        ],
+      },
+    ],
   },
   {
     level: "Level 2",
@@ -17,7 +54,36 @@ const packages = [
     color: "pink",
     popular: true,
     prices: { sedan: "$220", suv: "$260", largeSuv: "$300" },
-    desc: "Full interior and exterior detail with decontamination and paint sealant protection.",
+    sections: [
+      {
+        heading: "🧼 Exterior Includes",
+        items: [
+          "Pressure rinse to remove loose debris",
+          "Foam pre-soak & safe 2-bucket hand wash",
+          "Wheels, barrels & tires deep cleaned",
+          "Iron decontamination treatment (removes embedded brake dust & fallout)",
+          "Clay bar treatment (removes bonded surface contaminants)",
+          "Blow dry with microfiber towel",
+          "Hand-applied synthetic paint sealant (3–6 month protection)",
+          "Tire dressing (clean satin finish)",
+          "Door jambs cleaned",
+          "Exterior glass cleaned streak-free",
+          "✨ Restores smoothness & enhances gloss",
+        ],
+      },
+      {
+        heading: "🧽 Interior Includes",
+        items: [
+          "Full deep vacuum (seats, carpets, trunk)",
+          "Crevice blow-out (vents & tight areas)",
+          "Dashboard, console & door panels cleaned",
+          "Light stain treatment",
+          "Leather wipe-down & light conditioning (if applicable)",
+          "UV protection applied to plastics",
+          "Interior glass cleaned",
+        ],
+      },
+    ],
   },
   {
     level: "Level 3",
@@ -26,7 +92,58 @@ const packages = [
     color: "blue",
     popular: false,
     prices: { sedan: "$500", suv: "$600", largeSuv: "$700" },
-    desc: "2-step paint correction with 6–12 month protection. Major gloss upgrade.",
+    sections: [
+      {
+        heading: "🧼 Exterior — Full Decontamination",
+        items: [
+          "Pressure rinse & foam pre-soak",
+          "Safe 2-bucket hand wash",
+          "Wheels & tires deep cleaned",
+          "Iron removal treatment",
+          "Clay bar decontamination",
+          "Blow dry with microfiber towels",
+          "Trim & sensitive areas masked",
+        ],
+      },
+      {
+        heading: "🔧 Step 1 — Compounding",
+        items: [
+          "Machine compounding to remove moderate defects",
+          "Reduces 70–90% of swirl marks and light scratches",
+          "Restores clarity and removes oxidation",
+        ],
+      },
+      {
+        heading: "🔧 Step 2 — Refinement Polish",
+        items: [
+          "Fine polishing to remove haze",
+          "Enhances depth and gloss",
+          "Creates a smooth, reflective finish",
+        ],
+      },
+      {
+        heading: "🛡 Protection",
+        items: [
+          "Panel prep wipe (oil removal)",
+          "6–12 month synthetic paint sealant applied",
+          "Trim restoration",
+          "Tire dressing",
+          "Exterior glass cleaned",
+        ],
+      },
+      {
+        heading: "🧽 Interior Included",
+        items: [
+          "Full deep vacuum",
+          "Crevice blow-out",
+          "Steam cleaning on high-touch areas",
+          "Light–moderate stain treatment",
+          "Leather cleaning & conditioning (if applicable)",
+          "UV protection applied to plastics",
+          "Interior glass cleaned",
+        ],
+      },
+    ],
   },
   {
     level: "Level 4",
@@ -35,7 +152,60 @@ const packages = [
     color: "pink",
     popular: false,
     prices: { sedan: "$900", suv: "$1,050", largeSuv: "$1,200" },
-    desc: "Full correction prep and 1–3 year ceramic coating. Maximum shine and protection.",
+    sections: [
+      {
+        heading: "🧼 Full Exterior Preparation",
+        items: [
+          "Pressure rinse & foam pre-soak",
+          "Safe 2-bucket hand wash",
+          "Wheels & tires deep cleaned",
+          "Iron removal treatment",
+          "Clay bar decontamination",
+          "Blow dry with microfiber towels",
+          "Trim & sensitive areas masked",
+          "Multi-angle paint inspection",
+        ],
+      },
+      {
+        heading: "🔧 Paint Correction Prep",
+        items: [
+          "1–2 step machine correction (based on paint condition)",
+          "Removal of swirl marks & oxidation",
+          "Refinement polish for maximum clarity",
+          "Panel prep wipe to remove polishing oils",
+          "Paint fully corrected & prepped for proper coating bonding",
+        ],
+      },
+      {
+        heading: "🛡 Ceramic Coating Application",
+        items: [
+          "1–3 year ceramic coating applied by hand",
+          "Crosshatch application method",
+          "Proper flash timing & leveling",
+          "High-spot inspection under LED lighting",
+        ],
+      },
+      {
+        heading: "✦ Coated Surfaces",
+        items: [
+          "Paint",
+          "Plastic trim",
+          "Wheel faces",
+          "Exterior glass sealant applied",
+        ],
+      },
+      {
+        heading: "🧽 Interior Reset Included",
+        items: [
+          "Full deep vacuum",
+          "Steam treatment of high-touch areas",
+          "Light–moderate stain treatment",
+          "Leather cleaning & conditioning (if applicable)",
+          "UV protection applied to plastics",
+          "Interior glass cleaned",
+        ],
+      },
+    ],
   },
 ];
 
@@ -83,7 +253,7 @@ export default function ServicesSection() {
               <div
                 key={pkg.name}
                 data-ocid={`services.package.${pkg.level.toLowerCase().replace(" ", "")}.card`}
-                className={`relative p-5 sm:p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] group border-2 bg-white/[0.03] backdrop-blur-sm ${
+                className={`relative p-5 sm:p-6 rounded-xl transition-all duration-300 hover:scale-[1.01] group border-2 bg-white/[0.03] backdrop-blur-sm flex flex-col ${
                   pkg.popular
                     ? "border-brand-blue glow-blue shadow-[0_0_24px_rgba(59,130,246,0.25)]"
                     : pkg.color === "pink"
@@ -97,7 +267,8 @@ export default function ServicesSection() {
                   </div>
                 )}
 
-                <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                {/* Card header */}
+                <div className="flex items-start gap-3 sm:gap-4 mb-5">
                   <div
                     className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${
                       pkg.color === "blue"
@@ -123,12 +294,42 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                <p className="text-brand-gray text-sm leading-relaxed mb-5">
-                  {pkg.desc}
-                </p>
+                {/* Bullet sections */}
+                <div className="flex-1 space-y-4 mb-5">
+                  {pkg.sections.map((section) => (
+                    <div key={section.heading}>
+                      <p
+                        className={`text-xs font-black uppercase tracking-wider mb-2 ${
+                          pkg.color === "blue"
+                            ? "text-brand-blue-light"
+                            : "text-brand-pink-light"
+                        }`}
+                      >
+                        {section.heading}
+                      </p>
+                      <ul className="space-y-1">
+                        {section.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-xs sm:text-sm text-brand-gray leading-relaxed"
+                          >
+                            <span
+                              className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                                pkg.color === "blue"
+                                  ? "bg-brand-blue-light"
+                                  : "bg-brand-pink-light"
+                              }`}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
 
                 {/* Price table — stacked rows on mobile, columns on sm+ */}
-                <div className="border border-white/10 rounded-xl overflow-hidden">
+                <div className="border border-white/10 rounded-xl overflow-hidden mt-auto">
                   {/* Mobile: stacked rows */}
                   <div className="sm:hidden divide-y divide-white/10">
                     {[

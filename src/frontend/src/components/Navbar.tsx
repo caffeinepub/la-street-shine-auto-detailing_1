@@ -73,20 +73,6 @@ export default function Navbar() {
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-brand-pink group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => handleNavClick("#booking")}
-              data-ocid="nav.book_detail.button"
-              className="ml-2 px-5 py-2 bg-brand-pink hover:bg-pink-600 text-white font-bold rounded text-sm tracking-wide uppercase transition-colors duration-200 shadow-md shadow-pink-900/40"
-            >
-              Book a Detail
-            </button>
-            <a
-              href="tel:9094411114"
-              className="ml-2 px-5 py-2 btn-blue rounded text-sm"
-            >
-              Call Now
-            </a>
           </div>
 
           {/* Mobile Hamburger */}
@@ -116,20 +102,6 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => handleNavClick("#booking")}
-              data-ocid="nav.book_detail_mobile.button"
-              className="block w-full mt-2 px-4 py-3 bg-brand-pink hover:bg-pink-600 text-white font-bold rounded text-center text-sm tracking-wide uppercase transition-colors duration-200"
-            >
-              Book a Detail
-            </button>
-            <a
-              href="tel:9094411114"
-              className="block mt-2 px-4 py-3 btn-blue rounded text-center text-sm"
-            >
-              Call (909) 441-1114
-            </a>
           </div>
         </div>
       )}

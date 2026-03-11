@@ -54,13 +54,17 @@ export default function Hero() {
           <button
             type="button"
             onClick={scrollToBooking}
-            className="btn-blue px-8 py-4 rounded text-base w-full sm:w-auto min-w-[220px]"
+            data-ocid="hero.book_detail.primary_button"
+            className="px-8 py-4 rounded text-base font-bold w-full sm:w-auto min-w-[220px] transition-opacity duration-200 hover:opacity-90"
+            style={{ backgroundColor: "#e91e8c", color: "#ffffff" }}
           >
             Book Your Detail Now
           </button>
           <a
             href="tel:9094411114"
-            className="btn-outline-blue px-8 py-4 rounded text-base w-full sm:w-auto min-w-[220px] text-center"
+            data-ocid="hero.call_now.button"
+            className="px-8 py-4 rounded text-base font-bold w-full sm:w-auto min-w-[220px] text-center transition-opacity duration-200 hover:opacity-90"
+            style={{ backgroundColor: "#e91e8c", color: "#ffffff" }}
           >
             Call (909) 441-1114
           </a>

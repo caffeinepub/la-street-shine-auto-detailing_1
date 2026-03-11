@@ -47,7 +47,7 @@ const serviceOptions: { value: string; label: string; group?: string }[] = [
   },
   {
     value: "addon_wheel_clean",
-    label: "Add-On: Street Dust Reset (Wheel Deep Clean) — Starting at $75",
+    label: "Add-On: Street Dust Reset (Wheel Deep Clean) — Starting at $50",
     group: "addons",
   },
   {
