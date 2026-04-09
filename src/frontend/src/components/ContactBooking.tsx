@@ -3,57 +3,56 @@ import { useState } from "react";
 import { SiInstagram, SiTiktok } from "react-icons/si";
 import { ServiceType } from "../backend";
 
-const serviceOptions: { value: string; label: string; group?: string }[] = [
-  // Packages
+const packageOptions: { value: string; label: string }[] = [
+  {
+    value: "basic_wash",
+    label: "Basic Wash – Interior & Exterior ($70)",
+  },
   {
     value: ServiceType.exteriorOnly,
-    label:
-      "Level 1 – Street Starter (Sedans: $120 / SUVs: $150 / Large SUVs: $170)",
-    group: "packages",
+    label: "Level 1 – Street Starter (Sedan: $125 / SUV: $140 / Truck: $160)",
   },
   {
     value: ServiceType.interiorOnly,
     label:
-      "Level 2 – Street Elite — Most Popular (Sedans: $220 / SUVs: $260 / Large SUVs: $300)",
-    group: "packages",
+      "Level 2 – Street Elite — Most Popular (Sedan: $185 / SUV: $220 / Truck: $250)",
   },
   {
     value: ServiceType.standardDetail,
-    label:
-      "Level 3 – Street Gloss (Sedans: $500 / SUVs: $600 / Large SUVs: $700)",
-    group: "packages",
+    label: "Level 3 – Street Gloss (Sedan: $300 / SUV: $350 / Truck: $400)",
   },
   {
     value: ServiceType.premiumDetail,
     label:
-      "Level 4 – Street Shiner Signature (Sedans: $900 / SUVs: $1,050 / Large SUVs: $1,200)",
-    group: "packages",
+      "Level 4 – Street Shiner Signature (Sedan: $470 / SUV: $520 / Truck: $700)",
   },
-  // Add-Ons
+];
+
+const addonOptions: { value: string; label: string; price: string }[] = [
   {
     value: "addon_gloss_enhancement",
-    label: "Add-On: Street Gloss Enhancement (Polish) — Starting at $150",
-    group: "addons",
+    label: "Street Gloss Enhancement (Polish)",
+    price: "Starting at $150",
   },
   {
     value: "addon_trim_revival",
-    label: "Add-On: Street Trim Revival — Starting at $60",
-    group: "addons",
+    label: "Street Trim Revival",
+    price: "Starting at $60",
   },
   {
     value: "addon_headlights",
-    label: "Add-On: Street Vision Restore (Headlights) — Starting at $80",
-    group: "addons",
+    label: "Street Vision Restore (Headlights)",
+    price: "Starting at $80",
   },
   {
     value: "addon_wheel_clean",
-    label: "Add-On: Street Dust Reset (Wheel Deep Clean) — Starting at $50",
-    group: "addons",
+    label: "Street Dust Reset (Wheel Deep Clean)",
+    price: "Starting at $50",
   },
   {
     value: "addon_engine_detail",
-    label: "Add-On: Street Engine Detail — Starting at $60",
-    group: "addons",
+    label: "Street Engine Detail",
+    price: "Starting at $60",
   },
 ];
 
@@ -62,6 +61,7 @@ interface FormData {
   phone: string;
   email: string;
   serviceType: string;
+  addons: string[];
   vehicleInfo: string;
   preferredDate: string;
   preferredTime: string;
@@ -77,16 +77,12 @@ interface FormErrors {
   preferredDate?: string;
 }
 
-// Base input class: light background, dark text, visible border, good tap target
 const baseInputClass =
   "w-full bg-white border rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors";
-
 const validInputClass = `${baseInputClass} border-gray-300 focus:border-brand-blue focus:ring-brand-blue/20`;
 const errorInputClass = `${baseInputClass} border-brand-pink focus:border-brand-pink focus:ring-brand-pink/20`;
-
 const baseSelectClass =
   "w-full bg-white border rounded-lg px-4 py-3 text-gray-900 text-sm min-h-[44px] focus:outline-none focus:ring-2 transition-colors appearance-none cursor-pointer";
-
 const validSelectClass = `${baseSelectClass} border-gray-300 focus:border-brand-blue focus:ring-brand-blue/20`;
 const errorSelectClass = `${baseSelectClass} border-brand-pink focus:border-brand-pink focus:ring-brand-pink/20`;
 
@@ -106,7 +102,6 @@ function FieldError({ message }: { message?: string }) {
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
 function validatePhone(phone: string): boolean {
   return phone.replace(/\D/g, "").length >= 7;
 }
@@ -117,6 +112,7 @@ export default function ContactBooking() {
     phone: "",
     email: "",
     serviceType: "",
+    addons: [],
     vehicleInfo: "",
     preferredDate: "",
     preferredTime: "",
@@ -127,9 +123,7 @@ export default function ContactBooking() {
   const [isPending, setIsPending] = useState(false);
 
   const clearFieldError = (field: keyof FormErrors) => {
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
   const handleChange = (
@@ -138,52 +132,45 @@ export default function ContactBooking() {
     >,
   ) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear error for this field as user types
+    if (name === "serviceType") {
+      setForm((prev) => ({ ...prev, serviceType: value, addons: [] }));
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
     clearFieldError(name as keyof FormErrors);
+  };
+
+  const handleAddonToggle = (addonValue: string) => {
+    setForm((prev) => ({
+      ...prev,
+      addons: prev.addons.includes(addonValue)
+        ? prev.addons.filter((a) => a !== addonValue)
+        : [...prev.addons, addonValue],
+    }));
   };
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
-
-    if (!form.name.trim()) {
-      newErrors.name = "Full name is required";
-    }
-
-    if (!form.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!validatePhone(form.phone)) {
+    if (!form.name.trim()) newErrors.name = "Full name is required";
+    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
+    else if (!validatePhone(form.phone))
       newErrors.phone = "Please enter a valid phone number";
-    }
-
-    if (!form.email.trim()) {
-      newErrors.email = "Email address is required";
-    } else if (!validateEmail(form.email)) {
+    if (!form.email.trim()) newErrors.email = "Email address is required";
+    else if (!validateEmail(form.email))
       newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!form.serviceType) {
-      newErrors.serviceType = "Please select a service";
-    }
-
-    if (!form.vehicleInfo.trim()) {
+    if (!form.serviceType) newErrors.serviceType = "Please select a service";
+    if (!form.vehicleInfo.trim())
       newErrors.vehicleInfo = "Vehicle make & model is required";
-    }
-
-    if (!form.preferredDate) {
+    if (!form.preferredDate)
       newErrors.preferredDate = "Please select a preferred date";
-    }
-
     return newErrors;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      // Scroll to first error
       const firstErrorField = Object.keys(validationErrors)[0];
       const el = document.querySelector(`[name="${firstErrorField}"]`);
       if (el) {
@@ -192,19 +179,23 @@ export default function ContactBooking() {
       }
       return;
     }
-
     setErrors({});
     setIsPending(true);
 
-    const serviceLabel =
-      serviceOptions.find((o) => o.value === form.serviceType)?.label ??
+    const packageLabel =
+      packageOptions.find((o) => o.value === form.serviceType)?.label ??
       form.serviceType;
+    const addonLabels = form.addons
+      .map((a) => addonOptions.find((o) => o.value === a))
+      .filter(Boolean)
+      .map((o) => `  • ${o!.label} (${o!.price})`)
+      .join("\n");
 
     const subject = encodeURIComponent(
       `New Booking Request — ${form.name.trim()}`,
     );
     const body = encodeURIComponent(
-      `New Booking Request from LA Street Shine Website\n\nName: ${form.name.trim()}\nPhone: ${form.phone.trim()}\nEmail: ${form.email.trim()}\nService: ${serviceLabel}\nVehicle: ${form.vehicleInfo.trim()}\nPreferred Date: ${form.preferredDate}\nPreferred Time: ${form.preferredTime || "Any time"}\nNotes: ${form.notes.trim() || "None"}\n`,
+      `New Booking Request from LA Street Shine Website\n\nName: ${form.name.trim()}\nPhone: ${form.phone.trim()}\nEmail: ${form.email.trim()}\nPackage: ${packageLabel}\nAdd-Ons: ${addonLabels ? `\n${addonLabels}` : "None"}\nVehicle: ${form.vehicleInfo.trim()}\nPreferred Date: ${form.preferredDate}\nPreferred Time: ${form.preferredTime || "Any time"}\nNotes: ${form.notes.trim() || "None"}\n`,
     );
 
     window.location.href = `mailto:lastreetshineautodetailing@gmail.com?subject=${subject}&body=${body}`;
@@ -217,6 +208,7 @@ export default function ContactBooking() {
         phone: "",
         email: "",
         serviceType: "",
+        addons: [],
         vehicleInfo: "",
         preferredDate: "",
         preferredTime: "",
@@ -225,6 +217,8 @@ export default function ContactBooking() {
       setErrors({});
     }, 1000);
   };
+
+  const showAddons = !!form.serviceType;
 
   return (
     <section
@@ -257,7 +251,6 @@ export default function ContactBooking() {
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-            {/* Phone */}
             <div className="p-6 rounded-xl glass-card">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center">
@@ -277,7 +270,6 @@ export default function ContactBooking() {
               </div>
             </div>
 
-            {/* Social */}
             <div className="p-6 rounded-xl glass-card">
               <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-4">
                 Follow Us
@@ -318,7 +310,6 @@ export default function ContactBooking() {
               </div>
             </div>
 
-            {/* Service Area */}
             <div className="p-6 rounded-xl glass-card">
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -341,7 +332,6 @@ export default function ContactBooking() {
               </div>
             </div>
 
-            {/* Hours */}
             <div className="p-6 rounded-xl glass-card">
               <p className="text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2">
                 Hours
@@ -411,7 +401,7 @@ export default function ContactBooking() {
                         errors.name ? errorInputClass : validInputClass
                       }
                       aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? "error-name" : undefined}
+                      data-ocid="booking.name.input"
                     />
                     <FieldError message={errors.name} />
                   </div>
@@ -435,6 +425,7 @@ export default function ContactBooking() {
                         errors.phone ? errorInputClass : validInputClass
                       }
                       aria-invalid={!!errors.phone}
+                      data-ocid="booking.phone.input"
                     />
                     <FieldError message={errors.phone} />
                   </div>
@@ -457,17 +448,18 @@ export default function ContactBooking() {
                     placeholder="john@example.com"
                     className={errors.email ? errorInputClass : validInputClass}
                     aria-invalid={!!errors.email}
+                    data-ocid="booking.email.input"
                   />
                   <FieldError message={errors.email} />
                 </div>
 
-                {/* Service Type */}
+                {/* Package Selection */}
                 <div>
                   <label
                     htmlFor="booking-service"
                     className="block text-brand-gray text-xs uppercase tracking-wider font-semibold mb-2"
                   >
-                    Service Type <span style={{ color: "#FF007F" }}>*</span>
+                    Select Package <span style={{ color: "#FF007F" }}>*</span>
                   </label>
                   <div className="relative">
                     <select
@@ -479,26 +471,14 @@ export default function ContactBooking() {
                         errors.serviceType ? errorSelectClass : validSelectClass
                       }
                       aria-invalid={!!errors.serviceType}
+                      data-ocid="booking.service.select"
                     >
-                      <option value="">Select a service...</option>
-                      <optgroup label="— Detailing Packages —">
-                        {serviceOptions
-                          .filter((o) => o.group === "packages")
-                          .map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                      </optgroup>
-                      <optgroup label="— Add-On Services —">
-                        {serviceOptions
-                          .filter((o) => o.group === "addons")
-                          .map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                      </optgroup>
+                      <option value="">Select a package...</option>
+                      {packageOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
                     </select>
                     <div
                       className="pointer-events-none absolute inset-y-0 right-3 flex items-center"
@@ -523,6 +503,47 @@ export default function ContactBooking() {
                   <FieldError message={errors.serviceType} />
                 </div>
 
+                {/* Add-Ons */}
+                {showAddons && (
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5">
+                    <p className="text-white text-xs uppercase tracking-wider font-bold mb-1">
+                      Add-On Services
+                    </p>
+                    <p className="text-brand-gray text-xs mb-4">
+                      Optional — select any extras you'd like included.
+                    </p>
+                    <div className="space-y-3">
+                      {addonOptions.map((addon) => {
+                        const checked = form.addons.includes(addon.value);
+                        return (
+                          <label
+                            key={addon.value}
+                            className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2.5 border transition-all ${
+                              checked
+                                ? "border-brand-pink/60 bg-brand-pink/10"
+                                : "border-white/10 hover:border-white/20 hover:bg-white/5"
+                            }`}
+                            data-ocid={"booking.addon.checkbox"}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => handleAddonToggle(addon.value)}
+                              className="w-4 h-4 rounded accent-pink-500 shrink-0 cursor-pointer"
+                            />
+                            <span className="flex-1 text-sm text-white font-medium">
+                              {addon.label}
+                            </span>
+                            <span className="text-xs text-brand-gray whitespace-nowrap">
+                              {addon.price}
+                            </span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Vehicle Info */}
                 <div>
                   <label
@@ -543,6 +564,7 @@ export default function ContactBooking() {
                       errors.vehicleInfo ? errorInputClass : validInputClass
                     }
                     aria-invalid={!!errors.vehicleInfo}
+                    data-ocid="booking.vehicle.input"
                   />
                   <FieldError message={errors.vehicleInfo} />
                 </div>
@@ -567,6 +589,7 @@ export default function ContactBooking() {
                         errors.preferredDate ? errorInputClass : validInputClass
                       }
                       aria-invalid={!!errors.preferredDate}
+                      data-ocid="booking.date.input"
                     />
                     <FieldError message={errors.preferredDate} />
                   </div>
@@ -586,6 +609,7 @@ export default function ContactBooking() {
                         value={form.preferredTime}
                         onChange={handleChange}
                         className={validSelectClass}
+                        data-ocid="booking.time.select"
                       >
                         <option value="">Any time</option>
                         <option value="8:00 AM">8:00 AM</option>
@@ -638,12 +662,14 @@ export default function ContactBooking() {
                     placeholder="Any special requests or details about your vehicle..."
                     rows={3}
                     className={`${validInputClass} resize-none`}
+                    data-ocid="booking.notes.textarea"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isPending}
+                  data-ocid="booking.submit_button"
                   className="w-full py-4 rounded-xl text-base font-black flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     background:
